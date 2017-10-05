@@ -5,10 +5,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ProjectEulerSharp
+namespace ProjectEulerSharp.Sequences
 {
     class Primes : IEnumerable<long>
     {
+        private Primes()
+        {
+
+        }
+
+        public static Primes All
+        {
+            get { return new Primes(); }
+        }
+
         IEnumerator<long> IEnumerable<long>.GetEnumerator()
         {
             yield return 2;

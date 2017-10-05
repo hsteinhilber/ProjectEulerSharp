@@ -2,6 +2,7 @@
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
+using ProjectEulerSharp.Sequences;
 
 namespace ProjectEulerSharp.Page01
 {
@@ -23,7 +24,7 @@ namespace ProjectEulerSharp.Page01
         [TestMethod]
         public void Solve() 
         {
-            var fib = new Fibonacci();
+            var fib = Fibonacci.Start();
 
             int result = fib.TakeWhile(x => x < 4000000).Where(x => x % 2 == 0).Sum();
             LogResult(result);

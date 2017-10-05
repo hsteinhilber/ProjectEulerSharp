@@ -5,16 +5,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ProjectEulerSharp
+namespace ProjectEulerSharp.Sequences
 {
     public class Fibonacci : IEnumerable<int>
     {
         int first, second;
 
-        public Fibonacci(int first = 1, int second = 2)
+        private Fibonacci(int first, int second)
         {
             this.first = first;
             this.second = second;
+        }
+
+        public static Fibonacci Start(int first = 1, int second = 2)
+        {
+            return new Fibonacci(first, second);
         }
 
         IEnumerator<int> IEnumerable<int>.GetEnumerator()

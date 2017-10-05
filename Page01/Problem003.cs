@@ -2,6 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Linq;
 using System.Collections.Generic;
+using ProjectEulerSharp.Sequences;
 
 namespace ProjectEulerSharp.Page01
 {
@@ -21,9 +22,8 @@ namespace ProjectEulerSharp.Page01
         {
             const long NUMBER = 600851475143;
             long root = (long)Math.Ceiling(Math.Sqrt(NUMBER));
-            var primes = new Primes();
 
-            long result = primes.TakeWhile(x => x <= root).Where(x => NUMBER % x == 0).Max();
+            long result = Primes.All.TakeWhile(x => x <= root).Where(x => NUMBER % x == 0).Max();
             LogResult(result);
             Assert.AreEqual(ANSWER, result);
         }

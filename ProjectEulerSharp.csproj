@@ -48,11 +48,11 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Fibonacci.cs" />
+    <Compile Include="Sequences\Fibonacci.cs" />
     <Compile Include="Page01\Problem001.cs" />
     <Compile Include="Page01\Problem002.cs" />
     <Compile Include="Page01\Problem003.cs" />
-    <Compile Include="Primes.cs" />
+    <Compile Include="Sequences\Primes.cs" />
     <Compile Include="ProblemBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
