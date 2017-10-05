@@ -15,14 +15,15 @@ namespace ProjectEulerSharp.Page01
     [TestClass]
     public class Problem001 : ProblemBase
     {
+        public const int ANSWER = 233168;
+
         [TestMethod]
         public void Solve()
         {
             int result = Enumerable.Range(1, 999).Where(x => ((x % 3 == 0) || (x % 5 == 0))).Sum();
 
             LogResult(result);
+            Assert.AreEqual(ANSWER, result);
         }
-
-
     }
 }
