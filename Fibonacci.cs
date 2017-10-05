@@ -9,18 +9,22 @@ namespace ProjectEulerSharp
 {
     public class Fibonacci : IEnumerable<int>
     {
-        int first = 1, second = 2;
+        int first, second;
+
+        public Fibonacci(int first = 1, int second = 2)
+        {
+            this.first = first;
+            this.second = second;
+        }
 
         IEnumerator<int> IEnumerable<int>.GetEnumerator()
         {
             yield return first;
-            yield return second;
             while (true)
             {
-                var next = first + second;
-                first = second;
-                second = next;
-                yield return next;
+                yield return second;
+                second = first + second;
+                first = second - first;
             }
         }
 
