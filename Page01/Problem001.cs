@@ -4,11 +4,14 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace ProjectEulerSharp
 {
     [TestClass]
-    public class UnitTest1
+    public class Problem001 : ProblemBase
     {
         [TestMethod]
-        public void TestMethod1()
+        public void Solve()
         {
+            LogResult(42);
         }
+
+
     }
 }
