@@ -3,16 +3,34 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.VisualStudio.TestTools.UnitTesting.Logging;
 
 namespace ProjectEulerSharp
 {
-    public class ProblemBase
+    public abstract class ProblemBase
     {
-
         public ProblemBase()
         {
         }
+
+        protected virtual long ExpectedAnswer
+        {
+            get {
+                Assert.Inconclusive("Results for this problem have not been verified yet.");
+                return -1;
+            }
+        }
+
+        [TestMethod]
+        public void Solve()
+        {
+            long result = SolutionImplementation();
+            LogResult(result);
+            Assert.AreEqual(ExpectedAnswer, result);
+        }
+
+        protected abstract long SolutionImplementation();
 
         protected virtual void LogValue<T>(T value)
         {

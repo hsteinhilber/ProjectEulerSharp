@@ -19,16 +19,12 @@ namespace ProjectEulerSharp.Page01
     [TestClass]
     public class Problem002 : ProblemBase 
     {
-        public const int ANSWER = 4613732;
+        protected override long ExpectedAnswer => 4613732;
 
-        [TestMethod]
-        public void Solve() 
+        protected override long SolutionImplementation()
         {
             var fib = Fibonacci.Start();
-
-            int result = fib.TakeWhile(x => x < 4000000).Where(x => x % 2 == 0).Sum();
-            LogResult(result);
-            Assert.AreEqual(ANSWER, result);
+            return fib.TakeWhile(x => x < 4000000).Where(x => x % 2 == 0).Sum();
         }
 
     }

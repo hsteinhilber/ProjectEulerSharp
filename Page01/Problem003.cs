@@ -15,17 +15,13 @@ namespace ProjectEulerSharp.Page01
     [TestClass]
     public class Problem003 : ProblemBase
     {
-        public const long ANSWER = 6857;
+        protected override long ExpectedAnswer => 6857;
 
-        [TestMethod]
-        public void Solve()
+        protected override long SolutionImplementation()
         {
             const long NUMBER = 600851475143;
             long root = (long)Math.Ceiling(Math.Sqrt(NUMBER));
-
-            long result = Primes.All.TakeWhile(x => x <= root).Where(x => NUMBER % x == 0).Max();
-            LogResult(result);
-            Assert.AreEqual(ANSWER, result);
+            return Primes.All.TakeWhile(x => x <= root).Where(x => NUMBER % x == 0).Max();
         }
     }
 }
