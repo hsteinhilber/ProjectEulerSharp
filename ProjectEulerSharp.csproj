@@ -51,6 +51,7 @@
     <Compile Include="Extensions.cs" />
     <Compile Include="Page01\Problem007.cs" />
     <Compile Include="Page01\Problem008.cs" />
+    <Compile Include="Page01\Problem009.cs" />
     <Compile Include="PrimeFactor.cs" />
     <Compile Include="PrimeFactorCollection.cs" />
     <Compile Include="Page01\Problem004.cs" />
