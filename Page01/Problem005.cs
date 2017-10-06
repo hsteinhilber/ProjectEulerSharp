@@ -24,28 +24,8 @@ namespace ProjectEulerSharp.Page01
             var resultFactors = new PrimeFactorCollection();
 
             foreach (var num in Enumerable.Range(1, 20))
-                resultFactors.Add(GetPrimeFactors(num));
+                resultFactors.Add(num.GetPrimeFactors());
             return resultFactors.ComputeValue();
-        }
-
-        private IEnumerable<PrimeFactor> GetPrimeFactors(long value)
-        {
-            var factors = new PrimeFactorCollection();
-            var current = value;
-
-            foreach (var prime in Primes.All.TakeWhile(x => x <= value))
-            {
-                PrimeFactor factor = prime;
-                while (current % prime == 0)
-                {
-                    factor++;
-                    current /= prime;
-                }
-                factors.Add(factor);
-                if (current == 1)
-                    return factors;
-            }
-            return factors;
         }
     }
 }
