@@ -20,11 +20,11 @@ namespace ProjectEulerSharp.Page01
 
         protected override long SolutionImplementation()
         {
-            for (int a = 1; a <=1000; ++a)
+            for (var a = 1; a <= 332; ++a)
             {
-                for (int b = a + 1; b <= 1000; ++b)
+                for (var b = a + 1; b <= 498; ++b)
                 {
-                    int c = 1000 - (a + b);
+                    var c = 1000 - (a + b);
                     if (c <= b) break;
 
                     if (IsPythagoreanTriple(a, b, c))
