@@ -56,5 +56,25 @@ namespace ProjectEulerSharp
         {
             return collection.Aggregate(1L, (p, v) => p * v);
         }
+
+        public static IEnumerable<long> GetDivisors(this long number)
+        {
+            var divisors = new List<long>() { 1 };
+            var right = number;
+
+            for (var left = 2L; left < right; ++left)
+            {
+                if (number % left == 0)
+                {
+                    right = number / left;
+                    divisors.Add(left);
+                    if (left != right)
+                        divisors.Add(right);
+                }
+            }
+            if (number > 1) divisors.Add(number);
+
+            return divisors;
+        }
     }
 }
