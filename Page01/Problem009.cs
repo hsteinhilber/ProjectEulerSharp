@@ -18,14 +18,15 @@ namespace ProjectEulerSharp.Page01
     {
         protected override long ExpectedAnswer => 31875000;
 
+        private const int SUM = 1000;
+
         protected override long SolutionImplementation()
         {
-            for (var a = 1; a <= 332; ++a)
+            for (var a = 1; a <= (SUM - 3) / 3; ++a)
             {
-                for (var b = a + 1; b <= 498; ++b)
+                for (var b = a + 1; b <= (SUM - a) / 2; ++b)
                 {
-                    var c = 1000 - (a + b);
-                    if (c <= b) break;
+                    var c = SUM - (a + b);
 
                     if (IsPythagoreanTriple(a, b, c))
                         return a * b * c;
