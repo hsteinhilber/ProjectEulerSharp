@@ -48,6 +48,8 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="PrimeFactor.cs" />
+    <Compile Include="PrimeFactorCollection.cs" />
     <Compile Include="Page01\Problem004.cs" />
     <Compile Include="Page01\Problem005.cs" />
     <Compile Include="Sequences\Fibonacci.cs" />
