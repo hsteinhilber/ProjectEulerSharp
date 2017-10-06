@@ -46,5 +46,15 @@ namespace ProjectEulerSharp
                     return false;
             return true;
         }
+
+        public static int Product(this IEnumerable<int> collection)
+        {
+            return collection.Aggregate(1, (p, v) => p * v);
+        }
+
+        public static long Product(this IEnumerable<long> collection)
+        {
+            return collection.Aggregate(1L, (p, v) => p * v);
+        }
     }
 }
