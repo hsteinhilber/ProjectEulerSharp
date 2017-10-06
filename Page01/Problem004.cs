@@ -21,20 +21,11 @@ namespace ProjectEulerSharp.Page01
             long largest = 0;
             foreach (var i in Enumerable.Range(100, 900))
                 foreach (var j in Enumerable.Range(i, 1000 - i))
-                    if (IsPalindrome(i * j) && i * j > largest)
+                    if ((i * j).IsPalindrome() && i * j > largest)
                         largest = i * j;
             return largest;
         }
 
-        private bool IsPalindrome(long value)
-        {
-            var digits = value.ToString().ToCharArray();
-            var length = digits.Length;
-            var midpoint = length / 2;
-            for (int i = 0; i <= midpoint; ++i)
-                if (digits[i] != digits[length - i - 1])
-                    return false;
-            return true;
-        }
+        
     }
 }

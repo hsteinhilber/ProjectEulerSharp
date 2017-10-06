@@ -30,5 +30,21 @@ namespace ProjectEulerSharp
             }
             return factors;
         }
+
+        public static bool IsPalindrome(this int value)
+        {
+            return IsPalindrome((long)value);
+        }
+
+        public static bool IsPalindrome(this long value)
+        {
+            var digits = value.ToString().ToCharArray();
+            var length = digits.Length;
+            var midpoint = length / 2;
+            for (int i = 0; i <= midpoint; ++i)
+                if (digits[i] != digits[length - i - 1])
+                    return false;
+            return true;
+        }
     }
 }
