@@ -107,7 +107,7 @@ namespace ProjectEulerSharp.Page01
             return Enumerable.Range(0, 9988)
                 .Select(i => BigNumber.Skip(i).Take(13))
                 .Where(s => !s.Contains(0))
-                .Select(s => s.Aggregate(1L, (a, v) => a * v))
+                .Select(s => s.Product())
                 .Max();
         }
     }

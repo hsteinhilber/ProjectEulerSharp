@@ -10,7 +10,7 @@ namespace ProjectEulerSharp
 
         public long ComputeValue()
         {
-            return factors.Values.Aggregate(1L, (a, v) => a * v.ComputeValue());
+            return factors.Values.Select(f => f.ComputeValue()).Product();
         }
 
         public int Count => factors.Count;

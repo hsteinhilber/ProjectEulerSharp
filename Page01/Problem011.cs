@@ -1,5 +1,6 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Linq;
 
 namespace ProjectEulerSharp.Page01
 {
@@ -90,22 +91,22 @@ namespace ProjectEulerSharp.Page01
 
         private long CheckUpSlant(int row, int column)
         {
-            return GRID[row][column] * GRID[row - 1][column + 1] * GRID[row - 2][column + 2] * GRID[row - 3][column + 3];
+            return Enumerable.Range(0, 4).Select(o => GRID[row - o][column + o]).Product();
         }
 
         private long CheckHorizantal(int row, int column)
         {
-            return GRID[row][column] * GRID[row][column + 1] * GRID[row][column + 2] * GRID[row][column + 3];
+            return Enumerable.Range(0, 4).Select(o => GRID[row][column + o]).Product();
         }
 
         private long CheckDownSlant(int row, int column)
         {
-            return GRID[row][column] * GRID[row + 1][column + 1] * GRID[row + 2][column + 2] * GRID[row + 3][column + 3];
+            return Enumerable.Range(0, 4).Select(o => GRID[row + o][column + o]).Product();
         }
 
         private long CheckVertical(int row, int column)
         {
-            return GRID[row][column] * GRID[row + 1][column] * GRID[row + 2][column] * GRID[row + 3][column];
+            return Enumerable.Range(0, 4).Select(o => GRID[row + o][column]).Product();
         }
     }
 

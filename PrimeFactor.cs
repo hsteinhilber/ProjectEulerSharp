@@ -22,7 +22,7 @@ namespace ProjectEulerSharp
 
         public long ComputeValue()
         {
-            return Enumerable.Repeat(Prime, Count).Aggregate(1L, (a, v) => a * v);
+            return Enumerable.Repeat(Prime, Count).Product();
         }
 
         public override string ToString()
