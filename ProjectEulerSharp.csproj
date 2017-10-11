@@ -49,6 +49,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Extensions.cs" />
+    <Compile Include="LargeNumber.cs" />
     <Compile Include="Page01\Problem007.cs" />
     <Compile Include="Page01\Problem008.cs" />
     <Compile Include="Page01\Problem009.cs" />
