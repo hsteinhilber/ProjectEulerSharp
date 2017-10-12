@@ -10,7 +10,7 @@ namespace ProjectEulerSharp
      **************************************************************************/
     public class LargeNumber : IComparable<LargeNumber>, IComparable, IEquatable<LargeNumber>
     {
-        private const long CARRY_SIZE = 1000000000000000000L;
+        private const long CarrySize = 1000000000000000000L;
 
         private readonly long[] values;
 
@@ -28,10 +28,10 @@ namespace ProjectEulerSharp
             if (value < 0)
                 throw new ArgumentOutOfRangeException(nameof(value), nameof(LargeNumber) + " is unsigned and cannot be negative");
 
-            if (value < CARRY_SIZE)
+            if (value < CarrySize)
                 this.values = new long[] { value };
             else
-                this.values = new long[] { value % CARRY_SIZE, value / CARRY_SIZE };
+                this.values = new long[] { value % CarrySize, value / CarrySize };
         }
 
         public LargeNumber(LargeNumber value)
@@ -40,6 +40,11 @@ namespace ProjectEulerSharp
 
             this.values = new long[value.values.Length];
             value.values.CopyTo(this.values, 0);
+        }
+
+        private LargeNumber(long[] values)
+        {
+            this.values = values ?? throw new ArgumentNullException(nameof(values));
         }
 
         #endregion
@@ -112,7 +117,31 @@ namespace ProjectEulerSharp
             if (lhs == null) throw new ArgumentNullException(nameof(lhs));
             if (rhs == null) throw new ArgumentNullException(nameof(rhs));
 
-            throw new NotImplementedException();
+            if (lhs < rhs) return (rhs + lhs);
+
+            var resultLength = lhs.values.Length;
+            var carry = 0L;
+            var result = new long[resultLength];
+
+            Array.Copy(rhs.values, result, rhs.values.Length);
+            for (var index = 0; index < resultLength; index++)
+            {
+                result[index] += lhs.values[index] + carry;
+                carry = result[index] / CarrySize;
+
+                if (carry > 0)
+                {
+                    result[index] %= CarrySize;
+
+                    if (index == resultLength - 1)
+                    {
+                        Array.Resize(ref result, resultLength + 1);
+                        result[index + 1] = carry;
+                    }
+                }
+            }
+
+            return new LargeNumber(result);
         }
 
         public static LargeNumber operator -(LargeNumber lhs, LargeNumber rhs)
@@ -181,7 +210,7 @@ namespace ProjectEulerSharp
         {
             if (number.values.Length == 1) return number.values[0];
 
-            return number.values[0] + ((number.values[1] * CARRY_SIZE) & 0x7FFFFFFFFFFFFFFF);
+            return number.values[0] + ((number.values[1] * CarrySize) & 0x7FFFFFFFFFFFFFFF);
         }
 
         public static implicit operator LargeNumber(long number)
