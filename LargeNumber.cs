@@ -12,6 +12,8 @@ namespace ProjectEulerSharp
     {
         private const long CarrySize = 1000000000000000000L;
 
+        private const int DigitsPerSegment = 18;
+
         private readonly long[] values;
 
         public static readonly LargeNumber Zero = new LargeNumber();
@@ -103,9 +105,23 @@ namespace ProjectEulerSharp
 
         #region Static methods
 
-        public LargeNumber FromString(string value)
+        public LargeNumber Parse(string value)
         {
-            throw new NotImplementedException();
+            if (value == null) throw new ArgumentNullException(nameof(value));
+
+            var result = new long[value.Length / DigitsPerSegment + (value.Length % DigitsPerSegment > 0 ? 1 : 0)];
+
+            int resultIndex = 0, valueIndex = value.Length - DigitsPerSegment;
+            while (valueIndex > 0)
+            {
+                result[resultIndex++] = long.Parse(value.Substring(valueIndex, DigitsPerSegment));
+                valueIndex -= DigitsPerSegment;
+            }
+
+            var length = DigitsPerSegment + valueIndex;
+            result[resultIndex] = long.Parse(value.Substring(0, length));
+
+            return new LargeNumber(result);
         }
 
         #endregion
