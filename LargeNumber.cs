@@ -87,7 +87,8 @@ namespace ProjectEulerSharp
         {
             var result = new StringBuilder();
             for (int index = this.values.Length - 1; index >= 0; index--)
-                result.Append(this.values[index]);
+                result.AppendFormat("{0,18}", this.values[index]);
+            result.Replace(" ", "0");
             return result.ToString();
         }
 
