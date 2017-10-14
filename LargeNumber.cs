@@ -12,8 +12,9 @@ namespace ProjectEulerSharp
     public class LargeNumber : IComparable<LargeNumber>, IComparable, IEquatable<LargeNumber>
     {
         private const long CarrySize = 1000000000000000000L;
-
         private const int DigitsPerSegment = 18;
+        private const int DigitsPerTuple = 3;
+        private const int TuplesPerSegment = DigitsPerSegment / DigitsPerTuple;
 
         private readonly long[] values;
 
@@ -64,21 +65,21 @@ namespace ProjectEulerSharp
             if (!values.All(v => v < 1000)) throw new ArgumentOutOfRangeException(nameof(values), "All values of constructor must be less than 1000");
 
             var length = values.Length;
-            var remainder = length % 6;
-            var max = length / 6;
+            var remainder = length % TuplesPerSegment;
+            var max = length / TuplesPerSegment;
             this.values = new long[max + (remainder > 0 ? 1 : 0)];
 
             for (int m = 0; m < max; m++)
             {
-                var i = length - 6 * (m + 1);
-                this.values[m] = (from n in Enumerable.Range(i, 6)
-                                  select (long)(values[n] * Math.Pow(10, 3 * (i - n + 5)))).Sum();
+                var i = length - TuplesPerSegment * (m + 1);
+                this.values[m] = (from n in Enumerable.Range(i, TuplesPerSegment)
+                                  select (long)(values[n] * Math.Pow(10, DigitsPerTuple * (i - n + TuplesPerSegment - 1)))).Sum();
             }
 
             if (remainder > 0)
             {
                 this.values[max] = (from n in Enumerable.Range(0, remainder)
-                                    select (long)(values[n] * Math.Pow(10, 3 * (remainder - n - 1)))).Sum();
+                                    select (long)(values[n] * Math.Pow(10, DigitsPerTuple * (remainder - n - 1)))).Sum();
             }
         }
 
