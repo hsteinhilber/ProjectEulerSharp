@@ -16,7 +16,13 @@ namespace ProjectEulerSharp
         private const int DigitsPerTuple = 3;
         private const int TuplesPerSegment = DigitsPerSegment / DigitsPerTuple;
 
-        private readonly long[] values;
+        private long[] _values;
+
+        private long[] Values
+        {
+            get => this._values ?? (this._values = new long[] { 0 });
+            set => this._values = value;
+        }
 
         public static readonly LargeNumber Zero = new LargeNumber();
 
@@ -24,7 +30,7 @@ namespace ProjectEulerSharp
 
         public LargeNumber()
         {
-            this.values = new long[] { 0 };
+            this.Values = new long[] { 0 };
         }
 
         public LargeNumber(long value)
@@ -33,17 +39,17 @@ namespace ProjectEulerSharp
                 throw new ArgumentOutOfRangeException(nameof(value), nameof(LargeNumber) + " is unsigned and cannot be negative");
 
             if (value < CarrySize)
-                this.values = new long[] { value };
+                this.Values = new long[] { value };
             else
-                this.values = new long[] { value % CarrySize, value / CarrySize };
+                this.Values = new long[] { value % CarrySize, value / CarrySize };
         }
 
         public LargeNumber(LargeNumber value)
         {
             if (value == null) throw new ArgumentNullException(nameof(value));
 
-            this.values = new long[value.values.Length];
-            value.values.CopyTo(this.values, 0);
+            this.Values = new long[value.Values.Length];
+            value.Values.CopyTo(this.Values, 0);
         }
 
         /// <summary>
@@ -67,25 +73,25 @@ namespace ProjectEulerSharp
             var length = values.Length;
             var remainder = length % TuplesPerSegment;
             var max = length / TuplesPerSegment;
-            this.values = new long[max + (remainder > 0 ? 1 : 0)];
+            this.Values = new long[max + (remainder > 0 ? 1 : 0)];
 
             for (int m = 0; m < max; m++)
             {
                 var i = length - TuplesPerSegment * (m + 1);
-                this.values[m] = (from n in Enumerable.Range(i, TuplesPerSegment)
+                this.Values[m] = (from n in Enumerable.Range(i, TuplesPerSegment)
                                   select (long)(values[n] * Math.Pow(10, DigitsPerTuple * (i - n + TuplesPerSegment - 1)))).Sum();
             }
 
             if (remainder > 0)
             {
-                this.values[max] = (from n in Enumerable.Range(0, remainder)
+                this.Values[max] = (from n in Enumerable.Range(0, remainder)
                                     select (long)(values[n] * Math.Pow(10, DigitsPerTuple * (remainder - n - 1)))).Sum();
             }
         }
 
         private LargeNumber(long[] values)
         {
-            this.values = values ?? throw new ArgumentNullException(nameof(values));
+            this.Values = values ?? throw new ArgumentNullException(nameof(values));
         }
 
         #endregion
@@ -101,12 +107,12 @@ namespace ProjectEulerSharp
         {
             if (other == null) throw new ArgumentNullException(nameof(other));
 
-            if (this.values.Length < other.values.Length) return -1;
-            if (this.values.Length > other.values.Length) return 1;
+            if (this.Values.Length < other.Values.Length) return -1;
+            if (this.Values.Length > other.Values.Length) return 1;
 
-            for (int index = this.values.Length - 1; index >= 0; index--)
+            for (int index = this.Values.Length - 1; index >= 0; index--)
             {
-                long diff = this.values[index] - other.values[index];
+                long diff = this.Values[index] - other.Values[index];
                 if (diff != 0) return (int)diff;
             }
 
@@ -125,8 +131,8 @@ namespace ProjectEulerSharp
         public override string ToString()
         {
             var result = new StringBuilder();
-            for (int index = this.values.Length - 1; index >= 0; index--)
-                result.AppendFormat("{0,18}", this.values[index]);
+            for (int index = this.Values.Length - 1; index >= 0; index--)
+                result.AppendFormat("{0,18}", this.Values[index]);
             result.Replace(" ", "0");
             return result.ToString();
         }
@@ -138,7 +144,7 @@ namespace ProjectEulerSharp
 
         public override int GetHashCode()
         {
-            return 1649527923 + EqualityComparer<long[]>.Default.GetHashCode(this.values);
+            return 1649527923 + EqualityComparer<long[]>.Default.GetHashCode(this.Values);
         }
 
         #endregion
@@ -175,14 +181,14 @@ namespace ProjectEulerSharp
 
             if (lhs < rhs) return (rhs + lhs);
 
-            var resultLength = lhs.values.Length;
+            var resultLength = lhs.Values.Length;
             var carry = 0L;
             var result = new long[resultLength];
 
-            Array.Copy(rhs.values, result, rhs.values.Length);
+            Array.Copy(rhs.Values, result, rhs.Values.Length);
             for (var index = 0; index < resultLength; index++)
             {
-                result[index] += lhs.values[index] + carry;
+                result[index] += lhs.Values[index] + carry;
                 carry = result[index] / CarrySize;
 
                 if (carry > 0)
@@ -264,9 +270,9 @@ namespace ProjectEulerSharp
 
         public static explicit operator long(LargeNumber number)
         {
-            if (number.values.Length == 1) return number.values[0];
+            if (number.Values.Length == 1) return number.Values[0];
 
-            return number.values[0] + ((number.values[1] * CarrySize) & 0x7FFFFFFFFFFFFFFF);
+            return number.Values[0] + ((number.Values[1] * CarrySize) & 0x7FFFFFFFFFFFFFFF);
         }
 
         public static implicit operator LargeNumber(long number)
