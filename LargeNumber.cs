@@ -20,8 +20,8 @@ namespace ProjectEulerSharp
 
         private long[] Values
         {
-            get => this._values ?? (this._values = new long[] { 0 });
-            set => this._values = value;
+            get => _values ?? (_values = new long[] { 0 });
+            set => _values = value;
         }
 
         public static readonly LargeNumber Zero = new LargeNumber();

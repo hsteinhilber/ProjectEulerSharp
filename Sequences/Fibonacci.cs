@@ -7,14 +7,14 @@ using System.Threading.Tasks;
 
 namespace ProjectEulerSharp.Sequences
 {
-    public class Fibonacci : IEnumerable<int>
+    public sealed class Fibonacci : IEnumerable<int>
     {
-        int first, second;
+        int _first, _second;
 
         private Fibonacci(int first, int second)
         {
-            this.first = first;
-            this.second = second;
+            _first = first;
+            _second = second;
         }
 
         public static Fibonacci Start(int first = 1, int second = 2)
@@ -24,12 +24,12 @@ namespace ProjectEulerSharp.Sequences
 
         IEnumerator<int> IEnumerable<int>.GetEnumerator()
         {
-            yield return first;
+            yield return _first;
             while (true)
             {
-                yield return second;
-                second = first + second;
-                first = second - first;
+                yield return _second;
+                _second = _first + _second;
+                _first = _second - _first;
             }
         }
 

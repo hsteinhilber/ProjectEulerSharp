@@ -14,10 +14,7 @@ namespace ProjectEulerSharp.Sequences
 
         }
 
-        public static Primes All
-        {
-            get { return new Primes(); }
-        }
+        public static Primes All => new Primes();
 
         IEnumerator<long> IEnumerable<long>.GetEnumerator()
         {
