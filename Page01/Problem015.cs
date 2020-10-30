@@ -34,5 +34,7 @@ namespace ProjectEulerSharp.Page01
             // binomial coefficient (n + e / n) or (n+e)Cn
             return (SOUTH_STEPS + EAST_STEPS).Combination(SOUTH_STEPS);
         }
+
+        protected override long ExpectedAnswer => 137846528820;
     }
 }
