@@ -25,11 +25,14 @@ namespace ProjectEulerSharp.Page01
     [TestClass]
     public class Problem015 : ProblemBase
     {
+        const long SOUTH_STEPS = 20;
+        const long EAST_STEPS = 20;
+
         protected override long SolutionImplementation()
         {
             // The number of steps in a NE latice (or SE in this case) is equal to the
             // binomial coefficient (n + e / n) or (n+e)Cn
-            throw new NotImplementedException();
+            return (SOUTH_STEPS + EAST_STEPS).Combination(SOUTH_STEPS);
         }
     }
 }
