@@ -51,7 +51,7 @@ namespace ProjectEulerSharp.Page01
 
         private int GetChainLength(long chainStart)
         {
-            return 0;
+            return Collatz.Start(chainStart).Count();
         }
     }
 }
