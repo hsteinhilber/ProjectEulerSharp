@@ -51,7 +51,17 @@ namespace ProjectEulerSharp.Page01
 
         private int GetChainLength(long chainStart)
         {
-            return Collatz.Start(chainStart).Count();
+            // return Collatz.Start(chainStart).Count();
+            if (chainStart == 1)
+                return 1;
+
+            if (_chainLengths.ContainsKey(chainStart))
+                return _chainLengths[chainStart];
+
+            if (chainStart % 2 == 0)
+                return _chainLengths[chainStart] = (1 + GetChainLength(chainStart / 2));
+            else
+                return _chainLengths[chainStart] = (1 + GetChainLength(3 * chainStart + 1));
         }
 
         protected override long ExpectedAnswer => 837799;
