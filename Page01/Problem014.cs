@@ -53,5 +53,7 @@ namespace ProjectEulerSharp.Page01
         {
             return Collatz.Start(chainStart).Count();
         }
+
+        protected override long ExpectedAnswer => 837799;
     }
 }
