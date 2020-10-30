@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using System.Numerics;
 
 namespace ProjectEulerSharp
 {
@@ -79,7 +80,7 @@ namespace ProjectEulerSharp
             return divisors;
         }
 
-        public static long Factorial(this long number)
+        public static BigInteger Factorial(this long number)
         {
             if (number <= 1) return number;
 
@@ -95,7 +96,7 @@ namespace ProjectEulerSharp
             if (number < r) return 0;
 
             // nPr = n! / r!*(n-r)!
-            return number.Factorial() / (r.Factorial() * (number - r).Factorial());
+            return (long)(number.Factorial() / (r.Factorial() * (number - r).Factorial()));
         }
 
         public static long Permutation(this long number, long r)
@@ -107,7 +108,7 @@ namespace ProjectEulerSharp
             if (number < r) return 0;
 
             // nPr = n! / (n-r)!
-            return number.Factorial() / (number - r).Factorial();
+            return (long)(number.Factorial() / (number - r).Factorial());
         }
     }
 }
