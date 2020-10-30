@@ -1,5 +1,7 @@
 ﻿using ProjectEulerSharp.Sequences;
+using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 
 namespace ProjectEulerSharp
@@ -75,6 +77,37 @@ namespace ProjectEulerSharp
             if (number > 1) divisors.Add(number);
 
             return divisors;
+        }
+
+        public static long Factorial(this long number)
+        {
+            if (number <= 1) return number;
+
+            return number * Factorial(number - 1);
+        }
+
+        public static long Combination(this long number, long r)
+        {
+            // n >= r >= 0
+            if (number < 0) throw new ArgumentOutOfRangeException("number must be non-negative", nameof(number));
+            if (r < 0) throw new ArgumentOutOfRangeException("number must be non-negative", nameof(r));
+
+            if (number < r) return 0;
+
+            // nPr = n! / r!*(n-r)!
+            return number.Factorial() / (r.Factorial() * (number - r).Factorial());
+        }
+
+        public static long Permutation(this long number, long r)
+        {
+            // n >= r >= 0
+            if (number < 0) throw new ArgumentOutOfRangeException("number must be non-negative", nameof(number));
+            if (r < 0) throw new ArgumentOutOfRangeException("number must be non-negative", nameof(r));
+
+            if (number < r) return 0;
+
+            // nPr = n! / (n-r)!
+            return number.Factorial() / (number - r).Factorial();
         }
     }
 }
