@@ -93,6 +93,6 @@ namespace ProjectEulerSharp.Page01
             return "";
         }
 
-        // protected override long ExpectedAnswer => 0;
+        protected override long ExpectedAnswer => 21124;
     }
 }
