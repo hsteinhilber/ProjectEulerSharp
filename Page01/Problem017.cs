@@ -38,11 +38,10 @@ namespace ProjectEulerSharp.Page01
 
         private int CountLetters(int i)
         {
-            string text = NumberToText(i);
-            return text.Where(c => LETTERS.Contains(c)).Count();
+            return NumberToText(i).Replace("-", "").Replace(" ", "").Length;
         }
 
-        // TODO: This method is limited to numbers <= 9,999 and >= 1
+        // TODO: This method is limited to numbers <= 999,999 and >= 1
         private string NumberToText(int i)
         {
             var thousands = i / 1000;
@@ -52,7 +51,7 @@ namespace ProjectEulerSharp.Page01
             
             if (thousands > 0)
             {
-                result.Append(DIGITS[thousands]);
+                result.Append(NumberToText(thousands));
                 result.Append(" thousand ");
             }
 
