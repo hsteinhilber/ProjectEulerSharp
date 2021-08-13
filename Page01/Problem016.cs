@@ -29,6 +29,6 @@ namespace ProjectEulerSharp.Page01
             return result;
         }
 
-        // protected override long ExpectedAnswer => 0;
+        protected override long ExpectedAnswer => 1366;
     }
 }
