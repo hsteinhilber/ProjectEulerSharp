@@ -81,18 +81,6 @@ namespace ProjectEulerSharp.Page01
             return result.ToString();
         }
 
-        private string DigitToText(int c)
-        {
-
-            switch (c)
-            {
-                case 1: return "one";
-                case 2: return "two";
-                case 3: return "three";
-            }
-            return "";
-        }
-
         protected override long ExpectedAnswer => 21124;
     }
 }
