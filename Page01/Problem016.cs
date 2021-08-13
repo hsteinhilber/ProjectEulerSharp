@@ -19,14 +19,7 @@ namespace ProjectEulerSharp.Page01
  
         protected override long SolutionImplementation()
         {
-            var value = BigInteger.Pow(2, 1000);
-            var valueText = value.ToString();
-            var digitChars = valueText.ToCharArray();
-            var digitValues = new List<int>();
-            foreach (var c in digitChars)
-                digitValues.Add(int.Parse(c.ToString()));
-            var result = digitValues.Sum();
-            return result;
+            return BigInteger.Pow(2, 1000).ToString().ToCharArray().Sum(c => c - '0');
         }
 
         protected override long ExpectedAnswer => 1366;
