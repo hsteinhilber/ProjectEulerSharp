@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Numerics;
+using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace ProjectEulerSharp.Page01
@@ -16,7 +19,14 @@ namespace ProjectEulerSharp.Page01
  
         protected override long SolutionImplementation()
         {
-            return 0;
+            var value = BigInteger.Pow(2, 1000);
+            var valueText = value.ToString();
+            var digitChars = valueText.ToCharArray();
+            var digitValues = new List<int>();
+            foreach (var c in digitChars)
+                digitValues.Add(int.Parse(c.ToString()));
+            var result = digitValues.Sum();
+            return result;
         }
 
         // protected override long ExpectedAnswer => 0;
