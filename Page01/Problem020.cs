@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace ProjectEulerSharp.Page01
@@ -20,7 +21,7 @@ namespace ProjectEulerSharp.Page01
 
         protected override long SolutionImplementation()
         {
-            return 0; 
+            return 100L.Factorial().ToString().ToCharArray().Sum(c => c - '0'); 
         }
     }
 }
