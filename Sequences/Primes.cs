@@ -24,24 +24,13 @@ namespace ProjectEulerSharp.Sequences
             while (true)
             {
                 yield return n;
-                do n += 2; while (!IsPrime(n));
+                do n += 2; while (!n.IsPrime());
             }
         }
 
         IEnumerator IEnumerable.GetEnumerator()
         {
             return ((IEnumerable<long>)this).GetEnumerator();
-        }
-
-        private bool IsPrime(long num)
-        {
-            if (num < 2 || num % 2 == 0)
-                return false;
-
-            for (long i = 3; i <= num / i; i += 2)
-                if (num % i == 0) return false;
-
-            return true;
         }
     }
 }

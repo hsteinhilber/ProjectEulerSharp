@@ -110,5 +110,16 @@ namespace ProjectEulerSharp
             // nPr = n! / (n-r)!
             return (long)(number.Factorial() / (number - r).Factorial());
         }
+
+        public static bool IsPrime(this long num)
+        {
+            if (num < 2 || num % 2 == 0)
+                return false;
+
+            for (long i = 3; i <= num / i; i += 2)
+                if (num % i == 0) return false;
+
+            return true;
+        }
     }
 }
