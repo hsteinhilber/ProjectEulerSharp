@@ -48,7 +48,7 @@ namespace ProjectEulerSharp.Page01
 
         protected override long SolutionImplementation()
         {
-            return GetLargestSum(NODES, 0, 0);
+            return GetLargestSum(NODES);
         }
 
         private readonly int[][] NODES = new int[][] { new int[] { 75 },
@@ -68,15 +68,17 @@ namespace ProjectEulerSharp.Page01
                                                        new int[] { 04, 62, 98, 27, 23, 09, 70, 98, 73, 93, 38, 53, 60, 04, 23 } };
 
 
-        public int GetLargestSum(int[][] nodes, int level, int index)
+        private int GetLargestSum(int[][] nodes)
         {
-            if (level >= nodes.Length || index >= nodes[level].Length)
-                return 0;
+            for (int row = nodes.Length - 2; row >= 0; row--)
+            {
+                for (int index = 0; index < nodes[row].Length; index++)
+                {
+                    nodes[row][index] = nodes[row][index] + Math.Max(nodes[row + 1][index], nodes[row + 1][index + 1]);
+                }
+            }
 
-            int leftSum = GetLargestSum(nodes, level + 1, index);
-            int rightSum = GetLargestSum(nodes, level + 1, index + 1);
-
-            return nodes[level][index] + (leftSum > rightSum ? leftSum : rightSum);
+            return nodes[0][0];
         }
     }
 }
