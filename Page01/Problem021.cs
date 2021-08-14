@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -22,7 +23,24 @@ namespace ProjectEulerSharp.Page01
 
         protected override long SolutionImplementation()
         {
-            return 0;
+            var values = new List<long>();
+
+            for (long a = 2; a < 10000; a++)
+            {
+                if (!values.Contains(a))
+                {
+                    long b = a.GetDivisors().Sum() - a;
+                    if (a != b)
+                    {
+                        if (b.GetDivisors().Sum() - b == a)
+                        {
+                            values.Add(a);
+                            values.Add(b);
+                        }
+                    }
+                }
+            }
+            return values.Sum();
         }
     }
 }
