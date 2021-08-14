@@ -28,17 +28,15 @@ namespace ProjectEulerSharp.Page01
         protected override long SolutionImplementation()
         {
             long result = 0;
+            string rawFileText;
 
-            var reader = new StreamReader(@"Data\p022_names.txt");
-            var file = reader.ReadToEnd();
-            var names = file.Split(new string[] { "\",\"", "\"" }, StringSplitOptions.RemoveEmptyEntries);
-            var nameList = new List<string>(names);
+            using (var reader = new StreamReader(@"Data\p022_names.txt"))
+                rawFileText = reader.ReadToEnd();
+            var nameList = new List<string>(rawFileText.Split(new string[] { "\",\"", "\"" }, StringSplitOptions.RemoveEmptyEntries));
+            
             nameList.Sort();
-
             for (int index = 0; index < nameList.Count; index++)
-            {
                 result += (index + 1) * NameScore(nameList[index]);
-            }
 
             return result;
         }
