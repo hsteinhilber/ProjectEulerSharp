@@ -48,7 +48,7 @@ namespace ProjectEulerSharp.Page01
 
         protected override long SolutionImplementation()
         {
-            return GetLargestSum(NODES);
+            return ComputeLargestPathSum(NODES);
         }
 
         private readonly int[][] NODES = new int[][] { new int[] { 75 },
@@ -68,7 +68,7 @@ namespace ProjectEulerSharp.Page01
                                                        new int[] { 04, 62, 98, 27, 23, 09, 70, 98, 73, 93, 38, 53, 60, 04, 23 } };
 
 
-        private int GetLargestSum(int[][] nodes)
+        private int ComputeLargestPathSum(int[][] nodes)
         {
             for (int row = nodes.Length - 2; row >= 0; row--)
             {
