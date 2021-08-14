@@ -16,12 +16,11 @@ namespace ProjectEulerSharp.Page01
     [TestClass]
     public class Problem016 : ProblemBase
     {
- 
+        protected override long ExpectedAnswer => 1366;
+
         protected override long SolutionImplementation()
         {
             return BigInteger.Pow(2, 1000).ToString().ToCharArray().Sum(c => c - '0');
         }
-
-        protected override long ExpectedAnswer => 1366;
     }
 }

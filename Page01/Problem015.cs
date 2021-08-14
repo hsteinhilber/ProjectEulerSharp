@@ -26,6 +26,8 @@ namespace ProjectEulerSharp.Page01
     [TestClass]
     public class Problem015 : ProblemBase
     {
+        protected override long ExpectedAnswer => 137846528820;
+        
         const long SOUTH_STEPS = 20;
         const long EAST_STEPS = 20;
 
@@ -35,7 +37,5 @@ namespace ProjectEulerSharp.Page01
             // binomial coefficient (n + e / n) or (n+e)Cn
             return (SOUTH_STEPS + EAST_STEPS).Combination(SOUTH_STEPS);
         }
-
-        protected override long ExpectedAnswer => 137846528820;
     }
 }

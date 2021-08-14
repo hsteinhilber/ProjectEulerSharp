@@ -30,6 +30,8 @@ namespace ProjectEulerSharp.Page01
     [TestClass]
     public class Problem014 : ProblemBase
     {
+        protected override long ExpectedAnswer => 837799;
+
         private readonly Dictionary<long, int> _chainLengths = new Dictionary<long, int>();
 
         protected override long SolutionImplementation()
@@ -65,6 +67,5 @@ namespace ProjectEulerSharp.Page01
                 return _chainLengths[chainStart] = (1 + GetChainLength(3 * chainStart + 1));
         }
 
-        protected override long ExpectedAnswer => 837799;
     }
 }

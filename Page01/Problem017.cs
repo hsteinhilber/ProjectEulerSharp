@@ -23,6 +23,8 @@ namespace ProjectEulerSharp.Page01
     [TestClass]
     public class Problem017 : ProblemBase
     {
+        protected override long ExpectedAnswer => 21124;
+
         private readonly IList<char> LETTERS = 
             new char[] { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z' };
         private readonly IList<string> DIGITS =
@@ -79,7 +81,5 @@ namespace ProjectEulerSharp.Page01
             }
             return result.ToString();
         }
-
-        protected override long ExpectedAnswer => 21124;
     }
 }
