@@ -23,24 +23,21 @@ namespace ProjectEulerSharp.Page01
 
         protected override long SolutionImplementation()
         {
-            var values = new List<long>();
+            long result = 0;
 
             for (long a = 2; a < 10000; a++)
             {
-                if (!values.Contains(a))
+                long b = a.GetDivisors().Sum() - a;
+                if (a < b)
                 {
-                    long b = a.GetDivisors().Sum() - a;
-                    if (a != b)
+                    if (b.GetDivisors().Sum() - b == a)
                     {
-                        if (b.GetDivisors().Sum() - b == a)
-                        {
-                            values.Add(a);
-                            values.Add(b);
-                        }
+                        result += a + b;
                     }
                 }
             }
-            return values.Sum();
+
+            return result;
         }
     }
 }
