@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using ProjectEulerSharp.Sequences;
 
 namespace ProjectEulerSharp.Page01
 {
@@ -33,7 +34,20 @@ namespace ProjectEulerSharp.Page01
 
         protected override long SolutionImplementation()
         {
-            return 0;
+            var values = new List<int>(Enumerable.Range(1, LARGEST_CANDIDATE));
+            var abundants = new List<long>(AbundantNumbers.All.TakeWhile(i => i < LARGEST_CANDIDATE));
+
+            for (int i = 0; i < abundants.Count; i++)
+                for (int j = i; j < abundants.Count; j++)
+                {
+                    int sum = (int)(abundants[i] + abundants[j]);
+                    if (values.Contains(sum))
+                       values.Remove(sum);
+                }
+
+            return values.Sum();
         }
+
+        const int LARGEST_CANDIDATE = 28123;
     }
 }
