@@ -34,20 +34,19 @@ namespace ProjectEulerSharp.Page01
 
         protected override long SolutionImplementation()
         {
-            var values = new List<int>(Enumerable.Range(1, LARGEST_CANDIDATE));
-            var abundants = new List<long>(AbundantNumbers.All.TakeWhile(i => i < LARGEST_CANDIDATE));
+            long sum = 0;
+            for (long i = 1; i < LARGEST_CANDIDATE; i++)
+            {
+                bool canBeExpressedAsSum = false;
+                for (long j = 12; j + j <= i && !canBeExpressedAsSum; j++)
+                    if (j.IsAbundant() && (i - j).IsAbundant())
+                        canBeExpressedAsSum = true;
+                if (!canBeExpressedAsSum) sum += i;
 
-            for (int i = 0; i < abundants.Count; i++)
-                for (int j = i; j < abundants.Count; j++)
-                {
-                    int sum = (int)(abundants[i] + abundants[j]);
-                    if (values.Contains(sum))
-                       values.Remove(sum);
-                }
-
-            return values.Sum();
+            }
+            return sum;
         }
 
-        const int LARGEST_CANDIDATE = 28123;
+        const long LARGEST_CANDIDATE = 28123;
     }
 }
