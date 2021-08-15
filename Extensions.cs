@@ -121,5 +121,24 @@ namespace ProjectEulerSharp
 
             return true;
         }
+
+        public static long GetSumOfDivisors(this long number)
+        {
+            var result = 1L;
+            var right = number;
+
+            for (var left = 2L; left < right; ++left)
+            {
+                if (number % left == 0)
+                {
+                    right = number / left;
+                    result += left;
+                    if (left != right)
+                        result += right;
+                }
+            }
+            
+            return result;
+        }
     }
 }

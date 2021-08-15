@@ -27,10 +27,10 @@ namespace ProjectEulerSharp.Page01
 
             for (long a = 2; a < 10000; a++)
             {
-                long b = a.GetDivisors().Sum() - a;
+                long b = a.GetSumOfDivisors();
                 if (a < b)
                 {
-                    if (b.GetDivisors().Sum() - b == a)
+                    if (b.GetSumOfDivisors() == a)
                     {
                         result += a + b;
                     }
