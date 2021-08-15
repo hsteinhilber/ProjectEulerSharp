@@ -140,5 +140,20 @@ namespace ProjectEulerSharp
             
             return result;
         }
+
+        public static bool IsAbundant(this long number)
+        {
+            return number < number.GetSumOfDivisors();
+        }
+
+        public static bool IsPerfect(this long number)
+        {
+            return number == number.GetSumOfDivisors();
+        }
+
+        public static bool IsDeficient(this long number)
+        {
+            return number > number.GetSumOfDivisors();
+        }
     }
 }
