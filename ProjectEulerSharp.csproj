@@ -72,6 +72,7 @@
     <Compile Include="Page01\Problem004.cs" />
     <Compile Include="Page01\Problem005.cs" />
     <Compile Include="Page01\Problem010.cs" />
+    <Compile Include="Page01\Problem023.cs" />
     <Compile Include="Sequences\Collatz.cs" />
     <Compile Include="Sequences\Fibonacci.cs" />
     <Compile Include="Page01\Problem001.cs" />
