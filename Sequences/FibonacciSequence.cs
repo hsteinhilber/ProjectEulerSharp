@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -13,11 +14,11 @@ namespace ProjectEulerSharp.Sequences
     /// 
     /// URL: https://en.wikipedia.org/wiki/Fibonacci_number
     /// </summary>
-    public sealed class FibonacciSequence : IEnumerable<int>
+    public sealed class FibonacciSequence : IEnumerable<BigInteger>
     {
-        int _first, _second;
+        BigInteger _first, _second;
 
-        private FibonacciSequence(int first, int second)
+        private FibonacciSequence(BigInteger first, BigInteger second)
         {
             _first = first;
             _second = second;
@@ -28,7 +29,7 @@ namespace ProjectEulerSharp.Sequences
             return new FibonacciSequence(first, second);
         }
 
-        IEnumerator<int> IEnumerable<int>.GetEnumerator()
+        IEnumerator<BigInteger> IEnumerable<BigInteger>.GetEnumerator()
         {
             yield return _first;
             while (true)
@@ -41,7 +42,7 @@ namespace ProjectEulerSharp.Sequences
 
         IEnumerator IEnumerable.GetEnumerator()
         {
-            return ((IEnumerable<int>)this).GetEnumerator();
+            return ((IEnumerable<BigInteger>)this).GetEnumerator();
         }
     }
 }

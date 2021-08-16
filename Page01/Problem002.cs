@@ -25,7 +25,7 @@ namespace ProjectEulerSharp.Page01
         protected override long SolutionImplementation()
         {
             var fib = FibonacciSequence.Start();
-            return fib.TakeWhile(x => x < 4000000).Where(x => x % 2 == 0).Sum();
+            return (long)fib.TakeWhile(x => x < 4000000).Where(x => x % 2 == 0).Sum();
         }
 
     }

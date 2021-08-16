@@ -90,6 +90,11 @@ namespace ProjectEulerSharp
             return collection.Aggregate(1L, (p, v) => p * v);
         }
 
+        public static BigInteger Sum(this IEnumerable<BigInteger> collection)
+        {
+            return collection.Aggregate((p, v) => p + v);
+        }
+
         /// <summary>
         /// Computes all of the divisors (numbers that will evenly divide into) a given value.
         /// </summary>
