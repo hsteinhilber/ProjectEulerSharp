@@ -80,6 +80,7 @@
     <Compile Include="Page01\Problem001.cs" />
     <Compile Include="Page01\Problem002.cs" />
     <Compile Include="Page01\Problem003.cs" />
+    <Compile Include="Sequences\LexiPermutation.cs" />
     <Compile Include="Sequences\Primes.cs" />
     <Compile Include="ProblemBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
