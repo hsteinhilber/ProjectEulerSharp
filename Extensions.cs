@@ -9,11 +9,21 @@ namespace ProjectEulerSharp
 {
     public static class Extensions
     {
+        /// <summary>
+        /// Computes all of the prime factors of a given number and returns them as a collection.
+        /// </summary>
+        /// <param name="value">An <see cref="int"/> value to compute the prime factors of</param>
+        /// <returns>A collection of <see cref="PrimeFactor"/></returns>
         public static IEnumerable<PrimeFactor> GetPrimeFactors(this int value)
         {
             return GetPrimeFactors((long)value);
         }
 
+        /// <summary>
+        /// Computes all of the prime factors of a given number and returns them as a collection.
+        /// </summary>
+        /// <param name="value">A <see cref="long"/> value to compute the prime factors of</param>
+        /// <returns>A collection of <see cref="PrimeFactor"/></returns>
         public static IEnumerable<PrimeFactor> GetPrimeFactors(this long value)
         {
             var factors = new PrimeFactorCollection();
@@ -34,11 +44,21 @@ namespace ProjectEulerSharp
             return factors;
         }
 
+        /// <summary>
+        /// Verifies if a number is a palindrome number (the same backwards and forwards)
+        /// </summary>
+        /// <param name="value">An <see cref="int"/> value to verify</param>
+        /// <returns><code>true</code> if the number is a palindrome, otherwise <code>false</code></returns>
         public static bool IsPalindrome(this int value)
         {
             return IsPalindrome((long)value);
         }
 
+        /// <summary>
+        /// Verifies if a number is a palindrome number (the same backwards and forwards)
+        /// </summary>
+        /// <param name="value">A <see cref="long"/> value to verify</param>
+        /// <returns><code>true</code> if the number is a palindrome, otherwise <code>false</code></returns>
         public static bool IsPalindrome(this long value)
         {
             var digits = value.ToString().ToCharArray();
@@ -50,16 +70,31 @@ namespace ProjectEulerSharp
             return true;
         }
 
+        /// <summary>
+        /// Multiplies together all of the elements of a collection.
+        /// </summary>
+        /// <param name="collection">A collection of <see cref="int"/> values to multiply together</param>
+        /// <returns>The total product after multiplying all of the elements of the collection</returns>
         public static long Product(this IEnumerable<int> collection)
         {
             return collection.Aggregate(1L, (p, v) => p * v);
         }
 
+        /// <summary>
+        /// Multiplies together all of the elements of a collection.
+        /// </summary>
+        /// <param name="collection">A collection of <see cref="long"/> values to multiply together</param>
+        /// <returns>The total product after multiplying all of the elements of the collection</returns>
         public static long Product(this IEnumerable<long> collection)
         {
             return collection.Aggregate(1L, (p, v) => p * v);
         }
 
+        /// <summary>
+        /// Computes all of the divisors (numbers that will evenly divide into) a given value.
+        /// </summary>
+        /// <param name="number">A <see cref="long"/> value to compute the divisors of</param>
+        /// <returns></returns>
         public static IEnumerable<long> GetDivisors(this long number)
         {
             var divisors = new List<long>() { 1 };
@@ -80,6 +115,11 @@ namespace ProjectEulerSharp
             return divisors;
         }
 
+        /// <summary>
+        /// Computes the factorial of a given number (the product of all numbers in the sequence 1..n).
+        /// </summary>
+        /// <param name="number">The number to compute the factorial of</param>
+        /// <returns>A <see cref="BigInteger"/> representing the factorial of the given number</returns>
         public static BigInteger Factorial(this long number)
         {
             if (number <= 1) return number;
@@ -87,6 +127,12 @@ namespace ProjectEulerSharp
             return number * Factorial(number - 1);
         }
 
+        /// <summary>
+        /// Computes the possible number of combinations (unordered selections) of <paramref name="number"/> items taking <paramref name="r"/> items at a time.
+        /// </summary>
+        /// <param name="number">The total number of items in the set</param>
+        /// <param name="r">The number of items being selected at a time</param>
+        /// <returns>The total number of possible combinations</returns>
         public static long Combination(this long number, long r)
         {
             // n >= r >= 0
@@ -99,6 +145,12 @@ namespace ProjectEulerSharp
             return (long)(number.Factorial() / (r.Factorial() * (number - r).Factorial()));
         }
 
+        /// <summary>
+        /// Computes the number of permutations (ordered selections) of <paramref name="number"/> items taking <paramref name="r"/> items at a time.
+        /// </summary>
+        /// <param name="number">The total number of items in the set</param>
+        /// <param name="r">The number of items being taken at a time</param>
+        /// <returns>The total number of possible permutations</returns>
         public static long Permutation(this long number, long r)
         {
             // n >= r >= 0
@@ -111,6 +163,11 @@ namespace ProjectEulerSharp
             return (long)(number.Factorial() / (number - r).Factorial());
         }
 
+        /// <summary>
+        /// Verifies if a number is prime (can only be evenly divided by one and itself).
+        /// </summary>
+        /// <param name="num">The number to test</param>
+        /// <returns><code>true</code> if the number is prime, otherwise <code>false</code></returns>
         public static bool IsPrime(this long num)
         {
             if (num < 2 || num % 2 == 0)
@@ -122,6 +179,12 @@ namespace ProjectEulerSharp
             return true;
         }
 
+        /// <summary>
+        /// Computes the sum of all the proper divisors of <paramref name="number"/>. Proper divisors are ones
+        /// that are less than <paramref name="number"/>.
+        /// </summary>
+        /// <param name="number">The number to compute the sum for</param>
+        /// <returns>The sum of all proper divisors</returns>
         public static long GetSumOfDivisors(this long number)
         {
             long result = 1;
@@ -137,16 +200,31 @@ namespace ProjectEulerSharp
             return result;
         }
 
+        /// <summary>
+        /// Verifies if a number is considered an abundant number. An abundant number is one that is less than the sum of its proper divisors.
+        /// </summary>
+        /// <param name="number">The number to verify</param>
+        /// <returns><code>true</code> if the number is abundant, otherwise <code>false</code></returns>
         public static bool IsAbundant(this long number)
         {
             return number < number.GetSumOfDivisors();
         }
 
+        /// <summary>
+        /// Verifies if a number is considered a perfect number. A perfect number is one that is equal to the sum of its proper divisors.
+        /// </summary>
+        /// <param name="number">The number to verify</param>
+        /// <returns><code>true</code> if the number is perfect, otherwise <code>false</code></returns>
         public static bool IsPerfect(this long number)
         {
             return number == number.GetSumOfDivisors();
         }
 
+        /// <summary>
+        /// Verifies if a number is considered a deficient number. A deficient number is one that is greater than the sum of its proper divisors.
+        /// </summary>
+        /// <param name="number">The number to verify</param>
+        /// <returns><code>true</code> if the number is deficient, otherwise <code>false</code></returns>
         public static bool IsDeficient(this long number)
         {
             return number > number.GetSumOfDivisors();
