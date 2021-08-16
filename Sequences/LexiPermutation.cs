@@ -7,6 +7,13 @@ using System.Threading.Tasks;
 
 namespace ProjectEulerSharp.Sequences
 {
+    /// <summary>
+    /// Represents a sequence of lexicographic permutations of a given list of elements. The
+    /// given elements must be:
+    ///    1) sortable - implementing <see cref="IComparable{T}"/>
+    ///    2) unique - no duplicate elements may exist
+    /// </summary>
+    /// <typeparam name="T">Any comparable (implements <see cref="IComparable{T}"/></typeparam>
     class LexiPermutation<T> : IEnumerable<IList<T>> where T: IComparable<T>
     {
         private List<T> current;
@@ -24,30 +31,31 @@ namespace ProjectEulerSharp.Sequences
             while (!current.SequenceEqual(last))
             {
                 yield return current;
-                UpdatePermutation(current);
+                ComputeNextPermutation(current);
             }
-            yield return last;
-            //Let us consider the string “ABCDEF”. Let previously printed permutation be “DCFEBA”. The next permutation in sorted order should be “DEABCF”. Let us understand
-            //above steps to find next permutation.The ‘first character’ will be ‘C’. The ‘second character’ will be ‘E’. After swapping these two, we get “DEFCBA”. The final
-            //step is to sort the substring after the character original index of ‘first character’. Finally, we get “DEABCF”. 
+            yield return last; 
         }
 
-        private void UpdatePermutation(List<T> current)
+        private void ComputeNextPermutation(List<T> current)
         {
+            // Workiing right to left, find the first element that is smaller than the one to its right (leftElement)
             int index = current.Count - 2;
             while (index >= 0 && current[index].CompareTo(current[index + 1]) >= 0) index--;
-            var first = index;
+            var leftElement = index;
 
-            var second = first + 1;
-            for (index = first + 1; index < current.Count; index++)
-                if (current[index].CompareTo(current[first]) > 0 && current[index].CompareTo(current[second]) <= 0)
-                    second = index;
+            // Find the smallest element to the right of leftElement that is also larger than leftElement (rightElement)
+            var rightElement = leftElement + 1;
+            for (index = rightElement; index < current.Count; index++)
+                if (current[index].CompareTo(current[leftElement]) > 0 && current[index].CompareTo(current[rightElement]) <= 0)
+                    rightElement = index;
 
-            var temp = current[first];
-            current[first] = current[second];
-            current[second] = temp;
+            // Swap leftElement and rightElement
+            var temp = current[leftElement];
+            current[leftElement] = current[rightElement];
+            current[rightElement] = temp;
 
-            current.Sort(first + 1, current.Count - first - 1, null);
+            // Sort everything to the right of leftElement from smallest to largest
+            current.Sort(leftElement + 1, current.Count - leftElement - 1, null);
         }
 
         IEnumerator IEnumerable.GetEnumerator()
