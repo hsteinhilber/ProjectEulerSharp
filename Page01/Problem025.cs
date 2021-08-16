@@ -1,4 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using ProjectEulerSharp.Sequences;
+using System.Linq;
 
 namespace ProjectEulerSharp.Page01
 {
@@ -33,7 +35,7 @@ namespace ProjectEulerSharp.Page01
 
         protected override long SolutionImplementation()
         {
-            return 0;
+            return FibonacciSequence.Start(1, 1).TakeWhile(v => v.ToString().Length < 1000).Count() + 1;
         }
     }
 }
