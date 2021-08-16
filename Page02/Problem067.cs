@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Numerics;
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.IO;
 
 namespace ProjectEulerSharp.Page02
 {
@@ -34,7 +35,37 @@ namespace ProjectEulerSharp.Page02
 
         protected override long SolutionImplementation()
         {
-            return 0;
+            NODES = ReadNodesFromFile(@"Data\p067_triangle.txt");
+            return ComputeLargestPathSum(NODES);
+        }
+
+        private int[][] ReadNodesFromFile(string filename)
+        {
+            List<int[]> rows = new List<int[]>();
+            using (var reader = new StreamReader(filename))
+            {
+                while (!reader.EndOfStream)
+                {
+                    rows.Add(reader.ReadLine().Split(' ').Select(x => int.Parse(x)).ToArray());
+                }
+            }
+
+            return rows.ToArray();
+        }
+
+        private int[][] NODES;
+
+        private int ComputeLargestPathSum(int[][] nodes)
+        {
+            for (int row = nodes.Length - 2; row >= 0; row--)
+            {
+                for (int index = 0; index < nodes[row].Length; index++)
+                {
+                    nodes[row][index] = nodes[row][index] + Math.Max(nodes[row + 1][index], nodes[row + 1][index + 1]);
+                }
+            }
+
+            return nodes[0][0];
         }
     }
 }
