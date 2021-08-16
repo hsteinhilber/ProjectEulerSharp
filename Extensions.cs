@@ -173,7 +173,7 @@ namespace ProjectEulerSharp
             if (num < 2 || num % 2 == 0)
                 return false;
 
-            for (long i = 3; i <= num / i; i += 2)
+            for (long i = 3; i * i <= num; i += 2)
                 if (num % i == 0) return false;
 
             return true;
@@ -193,8 +193,8 @@ namespace ProjectEulerSharp
                 if (number % divisor == 0)
                 {
                     result += divisor;
-                    long rhs = number / divisor;
-                    if (rhs != divisor) result += rhs;
+                    if (divisor * divisor != number) 
+                        result += number / divisor;
                 }
             }
             return result;
