@@ -3,6 +3,14 @@ using System.Linq;
 
 namespace ProjectEulerSharp
 {
+    /// <summary>
+    /// Represents a prime number and the number of times the prime is a factor of another number. 
+    /// </summary>
+    /// <remarks>
+    /// A number can have a prime number be a factor multiple times. For instance, the number 12 has 
+    /// three prime factors: 2, 2, and 3. So in this case it would have 2^2 and 3^1 as its prime factors. 
+    /// In this case, there would be two <see cref="PrimeFactor"/>: {Prime: 2, Count: 2} and {Prime: 3, Count: 1}
+    /// </remarks>
     public struct PrimeFactor : IComparable<PrimeFactor>, IComparable, IEquatable<PrimeFactor>
     {
         public long Prime { get; }
@@ -20,6 +28,10 @@ namespace ProjectEulerSharp
             Count = count;
         }
 
+        /// <summary>
+        /// Computes the overall value of the prime factor by return (Prime)^(Count).
+        /// </summary>
+        /// <returns>Computes the product of Prime multiplied Count times</returns>
         public long ComputeValue()
         {
             return Enumerable.Repeat(Prime, Count).Product();
