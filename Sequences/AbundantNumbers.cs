@@ -3,6 +3,12 @@ using System.Collections.Generic;
 
 namespace ProjectEulerSharp.Sequences
 {
+    /// <summary>
+    /// Represents a sequence of numbers that are abundant. An abundant number is one that
+    /// is less than the sum of its proper divisors.
+    /// 
+    /// URL: https://en.wikipedia.org/wiki/Abundant_number
+    /// </summary>
     class AbundantNumbers : IEnumerable<long>
     {
         private AbundantNumbers()

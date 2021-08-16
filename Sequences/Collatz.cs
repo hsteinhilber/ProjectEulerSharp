@@ -7,6 +7,13 @@ using System.Threading.Tasks;
 
 namespace ProjectEulerSharp.Sequences
 {
+    /// <summary>
+    /// Represents a Collatz sequence that start with any positive integer n. Then each term is obtained from the previous term as follows: 
+    ///   1) if the previous term is even, the next term is one half of the previous term
+    ///   2) if the previous term is odd, the next term is 3 times the previous term plus 1. 
+    ///   
+    /// URL: https://en.wikipedia.org/wiki/Collatz_conjecture
+    /// </summary>
     internal class Collatz : IEnumerable<long>
     {
         private long _current;

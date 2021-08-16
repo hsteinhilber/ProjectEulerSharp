@@ -3,6 +3,11 @@ using System.Collections.Generic;
 
 namespace ProjectEulerSharp.Sequences
 {
+    /// <summary>
+    /// Represents a sequence of triangular numbers. The nth triangular number is equal to the sum of the n natural numbers from 1 to n. 
+    /// 
+    /// URL: https://en.wikipedia.org/wiki/Triangular_number
+    /// </summary>
     public static class TriangleNumbers
     {
         public static IEnumerable<long> Start()

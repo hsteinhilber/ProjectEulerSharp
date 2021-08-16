@@ -12,6 +12,8 @@ namespace ProjectEulerSharp.Sequences
     /// given elements must be:
     ///    1) sortable - implementing <see cref="IComparable{T}"/>
     ///    2) unique - no duplicate elements may exist
+    ///    
+    /// URL: https://en.wikipedia.org/wiki/Lexicographic_order
     /// </summary>
     /// <typeparam name="T">Any comparable (implements <see cref="IComparable{T}"/></typeparam>
     class LexiPermutation<T> : IEnumerable<IList<T>> where T: IComparable<T>

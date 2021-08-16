@@ -7,6 +7,12 @@ using System.Threading.Tasks;
 
 namespace ProjectEulerSharp.Sequences
 {
+    /// <summary>
+    /// Represents the sequence of prime numbers: natural numbers that are greater than one and
+    /// cannot be represented as the product of two smaller natural numbers.
+    /// 
+    /// URL: https://en.wikipedia.org/wiki/Prime_number
+    /// </summary>
     class Primes : IEnumerable<long>
     {
         private Primes()
