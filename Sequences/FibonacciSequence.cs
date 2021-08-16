@@ -13,19 +13,19 @@ namespace ProjectEulerSharp.Sequences
     /// 
     /// URL: https://en.wikipedia.org/wiki/Fibonacci_number
     /// </summary>
-    public sealed class Fibonacci : IEnumerable<int>
+    public sealed class FibonacciSequence : IEnumerable<int>
     {
         int _first, _second;
 
-        private Fibonacci(int first, int second)
+        private FibonacciSequence(int first, int second)
         {
             _first = first;
             _second = second;
         }
 
-        public static Fibonacci Start(int first = 1, int second = 2)
+        public static FibonacciSequence Start(int first = 1, int second = 2)
         {
-            return new Fibonacci(first, second);
+            return new FibonacciSequence(first, second);
         }
 
         IEnumerator<int> IEnumerable<int>.GetEnumerator()

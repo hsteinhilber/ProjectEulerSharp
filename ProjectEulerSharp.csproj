@@ -74,17 +74,17 @@
     <Compile Include="Page01\Problem005.cs" />
     <Compile Include="Page01\Problem010.cs" />
     <Compile Include="Page01\Problem023.cs" />
-    <Compile Include="Sequences\AbundantNumbers.cs" />
-    <Compile Include="Sequences\Collatz.cs" />
-    <Compile Include="Sequences\Fibonacci.cs" />
+    <Compile Include="Sequences\AbundantNumberSequence.cs" />
+    <Compile Include="Sequences\CollatzSequence.cs" />
+    <Compile Include="Sequences\FibonacciSequence.cs" />
     <Compile Include="Page01\Problem001.cs" />
     <Compile Include="Page01\Problem002.cs" />
     <Compile Include="Page01\Problem003.cs" />
-    <Compile Include="Sequences\LexiPermutation.cs" />
-    <Compile Include="Sequences\Primes.cs" />
+    <Compile Include="Sequences\LexicographicSequence.cs" />
+    <Compile Include="Sequences\PrimeNumberSequence.cs" />
     <Compile Include="ProblemBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Sequences\TriangleNumbers.cs" />
+    <Compile Include="Sequences\TriangleNumberSequence.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Page01\Problem006.cs" />

@@ -13,14 +13,14 @@ namespace ProjectEulerSharp.Sequences
     /// 
     /// URL: https://en.wikipedia.org/wiki/Prime_number
     /// </summary>
-    class Primes : IEnumerable<long>
+    class PrimeNumberSequence : IEnumerable<long>
     {
-        private Primes()
+        private PrimeNumberSequence()
         {
 
         }
 
-        public static Primes All => new Primes();
+        public static PrimeNumberSequence All => new PrimeNumberSequence();
 
         IEnumerator<long> IEnumerable<long>.GetEnumerator()
         {

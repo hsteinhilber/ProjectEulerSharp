@@ -23,7 +23,7 @@ namespace ProjectEulerSharp.Page01
 
         protected override long SolutionImplementation()
         {
-            return long.Parse(new String(new LexiPermutation<char>("0123456789").Take(1000000).Last().ToArray()));
+            return long.Parse(new String(new LexicographicSequence<char>("0123456789").Take(1000000).Last().ToArray()));
         }
     }
 }

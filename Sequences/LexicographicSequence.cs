@@ -16,11 +16,11 @@ namespace ProjectEulerSharp.Sequences
     /// URL: https://en.wikipedia.org/wiki/Lexicographic_order
     /// </summary>
     /// <typeparam name="T">Any comparable (implements <see cref="IComparable{T}"/></typeparam>
-    class LexiPermutation<T> : IEnumerable<IList<T>> where T: IComparable<T>
+    class LexicographicSequence<T> : IEnumerable<IList<T>> where T: IComparable<T>
     {
         private List<T> current;
 
-        public LexiPermutation(IEnumerable<T> initial)
+        public LexicographicSequence(IEnumerable<T> initial)
         {
             current = new List<T>(initial);
         }

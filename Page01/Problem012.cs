@@ -35,7 +35,7 @@ namespace ProjectEulerSharp.Page01
 
         protected override long SolutionImplementation()
         {
-            return TriangleNumbers.Start().First(x => x.GetDivisors().Count() >= 500);
+            return TriangleNumberSequence.Start().First(x => x.GetDivisors().Count() >= 500);
         }
     }
 }

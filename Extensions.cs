@@ -19,7 +19,7 @@ namespace ProjectEulerSharp
             var factors = new PrimeFactorCollection();
             var current = value;
 
-            foreach (var prime in Primes.All.TakeWhile(x => x <= value))
+            foreach (var prime in PrimeNumberSequence.All.TakeWhile(x => x <= value))
             {
                 PrimeFactor factor = prime;
                 while (current % prime == 0)

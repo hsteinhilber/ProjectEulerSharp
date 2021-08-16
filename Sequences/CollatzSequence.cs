@@ -14,15 +14,15 @@ namespace ProjectEulerSharp.Sequences
     ///   
     /// URL: https://en.wikipedia.org/wiki/Collatz_conjecture
     /// </summary>
-    internal class Collatz : IEnumerable<long>
+    internal class CollatzSequence : IEnumerable<long>
     {
         private long _current;
 
-        private Collatz(long first) => _current = first;
+        private CollatzSequence(long first) => _current = first;
 
-        public static Collatz Start(long first)
+        public static CollatzSequence Start(long first)
         {
-            return new Collatz(first);
+            return new CollatzSequence(first);
         }
 
         public IEnumerator<long> GetEnumerator()

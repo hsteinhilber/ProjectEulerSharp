@@ -20,7 +20,7 @@ namespace ProjectEulerSharp.Page01
 
         protected override long SolutionImplementation()
         {
-            return Primes.All.Skip(10000).First();
+            return PrimeNumberSequence.All.Skip(10000).First();
         }
     }
 }

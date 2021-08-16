@@ -8,7 +8,7 @@ namespace ProjectEulerSharp.Sequences
     /// 
     /// URL: https://en.wikipedia.org/wiki/Triangular_number
     /// </summary>
-    public static class TriangleNumbers
+    public static class TriangleNumberSequence
     {
         public static IEnumerable<long> Start()
         {

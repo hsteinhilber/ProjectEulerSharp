@@ -22,7 +22,7 @@ namespace ProjectEulerSharp.Page01
         {
             const long NUMBER = 600851475143;
             long root = (long)Math.Ceiling(Math.Sqrt(NUMBER));
-            return Primes.All.TakeWhile(x => x <= root).Where(x => NUMBER % x == 0).Max();
+            return PrimeNumberSequence.All.TakeWhile(x => x <= root).Where(x => NUMBER % x == 0).Max();
         }
     }
 }

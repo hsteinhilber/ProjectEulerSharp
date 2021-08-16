@@ -19,7 +19,7 @@ namespace ProjectEulerSharp.Page01
 
         protected override long SolutionImplementation()
         {
-            return Primes.All.TakeWhile(x => x < 2000000).Sum();
+            return PrimeNumberSequence.All.TakeWhile(x => x < 2000000).Sum();
         }
     }
 }

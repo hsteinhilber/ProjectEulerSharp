@@ -9,14 +9,14 @@ namespace ProjectEulerSharp.Sequences
     /// 
     /// URL: https://en.wikipedia.org/wiki/Abundant_number
     /// </summary>
-    class AbundantNumbers : IEnumerable<long>
+    class AbundantNumberSequence : IEnumerable<long>
     {
-        private AbundantNumbers()
+        private AbundantNumberSequence()
         {
 
         }
 
-        public static AbundantNumbers All => new AbundantNumbers();
+        public static AbundantNumberSequence All => new AbundantNumberSequence();
 
         IEnumerator<long> IEnumerable<long>.GetEnumerator()
         {
