@@ -1,4 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
+using System.Linq;
+
 namespace ProjectEulerSharp.Page01
 {
     /******************************************************************************
@@ -9,7 +12,7 @@ namespace ProjectEulerSharp.Page01
      * 1634 = 1^4 + 6^4 + 3^4 + 4^4
      * 8208 = 8^4 + 2^4 + 0^4 + 8^4
      * 9474 = 9^4 + 4^4 + 7^4 + 4^4
-     * As 1 = 14 is not a sum it is not included.
+     * As 1 = 1^4 is not a sum it is not included.
      * 
      * The sum of these numbers is 1634 + 8208 + 9474 = 19316.
      * 
@@ -22,7 +25,23 @@ namespace ProjectEulerSharp.Page01
 
         protected override long SolutionImplementation()
         {
-            return 0;
+            long sum = 0;
+            for (int n = 10; n < UPPER_LIMIT; n++)
+            {
+                if (n == ComputeSumOfFifthPowerOfDigits(n))
+                {
+                    LogValue(sum += n);
+                }
+            }
+            return sum;
+        }
+
+        private const long UPPER_LIMIT = 999999;
+
+        private long ComputeSumOfFifthPowerOfDigits(long n)
+        {
+            return (from d in from c in n.ToString() select (long)(c - '0')
+                    select d * d * d * d * d).Sum();
         }
     }
 }
