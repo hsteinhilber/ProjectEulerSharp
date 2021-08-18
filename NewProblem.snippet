@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>Project Euler Problem</Title>
+      <Author>Harry Steinhilber, Jr.</Author>
+      <Description>Fills in the basic skeleton for a new problem test class.</Description>
+      <Shortcut>euler</Shortcut>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+    </Header>
+    <Snippet>
+      <Declarations>
+        <Literal>
+          <ID>ProblemNumber</ID>
+          <ToolTip>Enter the 3-digit problem id number.</ToolTip>
+          <Default>001</Default>
+        </Literal>
+        <Literal>
+          <ID>PageNumber</ID>
+          <ToolTip>Enter the 2-digit page number the problem is on at Project Euler.</ToolTip>
+          <Default>01</Default>
+        </Literal>
+      </Declarations>
+      <Imports>
+        <Import>
+          <Namespace>Microsoft.VisualStudio.TestTools.UnitTesting</Namespace>
+        </Import>
+      </Imports>
+      <Code Language="CSharp" Kind="file">
+        <![CDATA[namespace ProjectEulerSharp.Page$PageNumber$
+{
+    /******************************************************************************
+     * URL: http://projecteuler.net/problem=$ProblemNumber$
+     * Title: Title of the problem
+     * Description of the math problem.
+     ******************************************************************************/
+    [TestClass]
+    public class Problem$ProblemNumber$ : ProblemBase
+    {
+        // protected override long ExpectedAnswer => 0;
+
+        protected override long SolutionImplementation()
+        {
+            return 0;
+        }
+    }
+}
+
+]]>
+      </Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>
