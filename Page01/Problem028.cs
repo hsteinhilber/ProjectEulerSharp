@@ -30,24 +30,30 @@ namespace ProjectEulerSharp.Page01
 
             for (int n = 1; n <= GRID_SIZE * GRID_SIZE; n++)
             {
-                if (x == y || x + y == GRID_SIZE - 1)
+                if (IsOnDiagonal(x, y))
                     sum += n;
 
-                if (x == y || (x < GRID_SIZE / 2 && x + y == GRID_SIZE - 1) || (x > GRID_SIZE / 2 && x + y == GRID_SIZE))
-                {
-                    var tmp = dx;
-                    dx = -dy;
-                    dy = tmp;
-                }
+                if (ShouldRotate(x, y))
+                    Rotate(ref dx, ref dy);
 
-                x += dx;
-                y += dy;
+                x += dx; y += dy;
             }
 
             return sum;
         }
 
         private const int GRID_SIZE = 1001;
+
+        private static void Rotate(ref int dx, ref int dy)
+        {
+            var tmp = dx;
+            dx = -dy;
+            dy = tmp;
+        }
+
+        private static bool ShouldRotate(int x, int y) => x == y || (x < GRID_SIZE / 2 && x + y == GRID_SIZE - 1) || (x > GRID_SIZE / 2 && x + y == GRID_SIZE);
+
+        private static bool IsOnDiagonal(int x, int y) => x == y || x + y == GRID_SIZE - 1;
     }
 }
 
