@@ -1,5 +1,4 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
 
@@ -27,12 +26,9 @@ namespace ProjectEulerSharp.Page01
 
         protected override long SolutionImplementation()
         {
-            List<BigInteger> results = new List<BigInteger>(100 * 100);
-            for (int a = 2; a <= 100; a++)
-                for (int b = 2; b <= 100; b++)
-                    results.Add(BigInteger.Pow(a, b));
-
-            return results.Distinct().LongCount();
+            return (from a in Enumerable.Range(2, 99)                         // Range(2, 99) will produce integer 2 <= a <= 100
+                    join b in Enumerable.Range(2, 99) on true equals true     // join on "true equals true" simply means to join every element in set A to every element in set B
+                    select BigInteger.Pow(a, b)).Distinct().LongCount();
         }
     }
 }
