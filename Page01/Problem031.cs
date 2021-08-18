@@ -20,23 +20,27 @@ namespace ProjectEulerSharp.Page01
 
         protected override long SolutionImplementation()
         {
-            return CountCombinations(200, 0);
+            return CountCombinations(200, new int[] { 200, 100, 50, 20, 10, 5, 2, 1 });
         }
 
-        private readonly int[] COIN_VALUES = new int[] { 200, 100, 50, 20, 10, 5, 2, 1 };
+        private long?[,] CACHE;
 
-        private readonly long?[,] CACHE = new long?[201, 8];
+        private long CountCombinations(long amount, int[] coinValues)
+        {
+            CACHE = new long?[amount + 1, coinValues.Length];
+            return CountCombinations(amount, 0, coinValues);
+        }
 
-        private long CountCombinations(long amount, int current_coin)
+        private long CountCombinations(long amount, int current_coin, int[] coinValues)
         {
             if (amount == 0) return 1;
-            if (amount < 0 || current_coin == COIN_VALUES.Length) return 0;
+            if (amount < 0 || current_coin == coinValues.Length) return 0;
 
             if (CACHE[amount, current_coin] != null)
                 return (long)CACHE[amount, current_coin];
 
-            return (long)(CACHE[amount, current_coin] = CountCombinations(amount - COIN_VALUES[current_coin], current_coin) +
-                                                        CountCombinations(amount, current_coin + 1));
+            return (long)(CACHE[amount, current_coin] = CountCombinations(amount - coinValues[current_coin], current_coin, coinValues) +
+                                                        CountCombinations(amount, current_coin + 1, coinValues));
         }
     }
 }
