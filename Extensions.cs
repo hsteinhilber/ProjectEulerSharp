@@ -44,6 +44,11 @@ namespace ProjectEulerSharp
             return factors;
         }
 
+        public static bool InRange(this long number, long min, long max)
+        {
+            return (min <= number) && (number <= max);
+        }
+
         /// <summary>
         /// Verifies if a number is a palindrome number (the same backwards and forwards)
         /// </summary>

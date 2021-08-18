@@ -1,4 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Collections.Generic;
+using System.Linq;
+
 namespace ProjectEulerSharp.Page01
 {
     /******************************************************************************
@@ -23,7 +26,37 @@ namespace ProjectEulerSharp.Page01
 
         protected override long SolutionImplementation()
         {
-            return 0;
+            return GetPandigitalProducts().Distinct().Sum();
+        }
+
+        private IEnumerable<long> GetPandigitalProducts()
+        {
+            for (long a = 1; a <= 9; a++)
+            {
+                for (long b = 1234; b <= 9876; b++)
+                {
+                    long product = a * b;
+                    if (product.InRange(1234, 9876) && IsPandigital(string.Format("{0}{1}{2}", a, b, product)))
+                        yield return product;
+                }
+            }
+
+            for (long a = 12; a <= 98; a++)
+            {
+                for (long b = 123; b <= 987; b++)
+                {
+                    long product = a * b;
+                    if (product.InRange(1234, 9876) && IsPandigital(string.Format("{0}{1}{2}", a, b, product)))
+                        yield return product;
+                }
+            }
+        }
+
+        private bool IsPandigital(string number)
+        {
+            List<char> digits = number.ToCharArray().ToList();
+            digits.Sort();
+            return (new string(digits.ToArray()) == "123456789");
         }
     }
 }
