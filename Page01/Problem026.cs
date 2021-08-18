@@ -25,7 +25,7 @@ namespace ProjectEulerSharp.Page01
     [TestClass]
     public class Problem026 : ProblemBase
     {
-        // protected override long ExpectedAnswer => 0;
+        protected override long ExpectedAnswer => 983;
 
         protected override long SolutionImplementation()
         {
@@ -53,7 +53,7 @@ namespace ProjectEulerSharp.Page01
             {
                 result.Append(numerator / denominator);
                 numerator = (numerator % denominator) * 10;
-            } while (result.Length < 10000 && numerator > 0);
+            } while (result.Length < 3000 && numerator > 0);
 
             return result.ToString();
         }
