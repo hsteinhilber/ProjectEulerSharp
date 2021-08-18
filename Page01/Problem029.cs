@@ -1,4 +1,8 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Collections.Generic;
+using System.Linq;
+using System.Numerics;
+
 namespace ProjectEulerSharp.Page01
 {
     /******************************************************************************
@@ -23,7 +27,12 @@ namespace ProjectEulerSharp.Page01
 
         protected override long SolutionImplementation()
         {
-            return 0;
+            List<BigInteger> results = new List<BigInteger>(100 * 100);
+            for (int a = 2; a <= 100; a++)
+                for (int b = 2; b <= 100; b++)
+                    results.Add(BigInteger.Pow(a, b));
+
+            return results.Distinct().LongCount();
         }
     }
 }
