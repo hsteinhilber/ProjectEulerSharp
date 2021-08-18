@@ -27,22 +27,19 @@ namespace ProjectEulerSharp.Page01
         {
             long sum = 0;
             for (int n = 10; n < UPPER_LIMIT; n++)
-            {
                 if (n == ComputeSumOfFifthPowerOfDigits(n))
-                {
-                    LogValue(sum += n);
-                }
-            }
+                    sum += n;
             return sum;
         }
 
-        private const long UPPER_LIMIT = 999999;
+        private const long UPPER_LIMIT = 250000;
 
         private long ComputeSumOfFifthPowerOfDigits(long n)
         {
-            return (from d in from c in n.ToString() select (long)(c - '0')
-                    select d * d * d * d * d).Sum();
+            return (from c in n.ToString() select ToTheFifth((long)(c - '0'))).Sum();
         }
+
+        private long ToTheFifth(long n) => n * n * n * n * n;
     }
 }
 
