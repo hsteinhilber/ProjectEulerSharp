@@ -14,6 +14,8 @@ namespace ProjectEulerSharp.Page01
      * Find the sum of all the multiples of 3 or 5 below 1000.
      **************************************************************************/
     [TestClass]
+    [TestCategory("Fast")]
+    [TestCategory("Difficulty-05")]
     public class Problem001 : ProblemBase
     {
         protected override long ExpectedAnswer => 233168;

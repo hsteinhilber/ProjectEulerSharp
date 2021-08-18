@@ -15,6 +15,8 @@ namespace ProjectEulerSharp.Page01
      * Find the product abc.
      **************************************************************************/
     [TestClass]
+    [TestCategory("Fast")]
+    [TestCategory("Difficulty-05")]
     public class Problem009 : ProblemBase
     {
         protected override long ExpectedAnswer => 31875000;

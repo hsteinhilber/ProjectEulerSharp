@@ -15,6 +15,8 @@ namespace ProjectEulerSharp.Page01
      * Find the sum of the digits in the number 100!
      ******************************************************************************/
     [TestClass]
+    [TestCategory("Fast")]
+    [TestCategory("Difficulty-05")]
     public class Problem020 : ProblemBase
     {
         protected override long ExpectedAnswer => 648;

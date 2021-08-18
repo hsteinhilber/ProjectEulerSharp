@@ -19,6 +19,8 @@ namespace ProjectEulerSharp.Page01
      * Find the sum of all the numbers that can be written as the sum of fifth powers of their digits.
      ******************************************************************************/
     [TestClass]
+    [TestCategory("Fast")]
+    [TestCategory("Difficulty-05")]
     public class Problem030 : ProblemBase
     {
         protected override long ExpectedAnswer => 443839;

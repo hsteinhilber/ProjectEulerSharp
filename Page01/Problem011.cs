@@ -37,6 +37,8 @@ namespace ProjectEulerSharp.Page01
      * direction (up, down, left, right, or diagonally) in the 20×20 grid?
      **************************************************************************/
     [TestClass]
+    [TestCategory("Fast")]
+    [TestCategory("Difficulty-05")]
     public class Problem011 : ProblemBase
     {
         protected override long ExpectedAnswer => 70600674;

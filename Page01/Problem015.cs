@@ -24,6 +24,8 @@ namespace ProjectEulerSharp.Page01
      * How many such routes are there through a 20×20 grid?
      ******************************************************************************/
     [TestClass]
+    [TestCategory("Fast")]
+    [TestCategory("Difficulty-05")]
     public class Problem015 : ProblemBase
     {
         protected override long ExpectedAnswer => 137846528820;

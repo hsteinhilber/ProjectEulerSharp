@@ -29,6 +29,8 @@ namespace ProjectEulerSharp.Page01
      * What is the value of the first triangle number to have over five hundred divisors?
      **************************************************************************/
     [TestClass]
+    [TestCategory("Fast")]
+    [TestCategory("Difficulty-05")]
     public class Problem012 : ProblemBase
     {
         protected override long ExpectedAnswer => 76576500;

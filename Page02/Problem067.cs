@@ -29,6 +29,8 @@ namespace ProjectEulerSharp.Page02
      * is an efficient algorithm to solve it. ;o)
      ******************************************************************************/
     [TestClass]
+    [TestCategory("Fast")]
+    [TestCategory("Difficulty-05")]
     public class Problem067 : ProblemBase
     {
         protected override long ExpectedAnswer => 7273;

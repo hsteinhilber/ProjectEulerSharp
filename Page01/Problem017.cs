@@ -21,6 +21,8 @@ namespace ProjectEulerSharp.Page01
      * when writing out numbers is in compliance with British usage.
      ******************************************************************************/
     [TestClass]
+    [TestCategory("Fast")]
+    [TestCategory("Difficulty-05")]
     public class Problem017 : ProblemBase
     {
         protected override long ExpectedAnswer => 21124;

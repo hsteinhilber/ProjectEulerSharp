@@ -18,6 +18,8 @@ namespace ProjectEulerSharp.Page01
      * What is the sum of the numbers on the diagonals in a 1001 by 1001 spiral formed in the same way?
      ******************************************************************************/
     [TestClass]
+    [TestCategory("Fast")]
+    [TestCategory("Difficulty-05")]
     public class Problem028 : ProblemBase
     {
         protected override long ExpectedAnswer => 669171001;

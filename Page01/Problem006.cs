@@ -20,6 +20,8 @@ namespace ProjectEulerSharp.Page01
      * hundred natural numbers and the square of the sum.
      **************************************************************************/
     [TestClass]
+    [TestCategory("Fast")]
+    [TestCategory("Difficulty-05")]
     public class Problem006 : ProblemBase
     {
         protected override long ExpectedAnswer => 25164150;

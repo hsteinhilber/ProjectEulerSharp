@@ -16,6 +16,8 @@ namespace ProjectEulerSharp.Page01
      * the numbers from 1 to 20?
      **************************************************************************/
     [TestClass]
+    [TestCategory("Fast")]
+    [TestCategory("Difficulty-05")]
     public class Problem005 : ProblemBase
     {
         protected override long ExpectedAnswer => 232792560;

@@ -27,6 +27,8 @@ namespace ProjectEulerSharp.Page01
      * number of primes for consecutive values of n, starting with n=0.
      ******************************************************************************/
     [TestClass]
+    [TestCategory("Fast")]
+    [TestCategory("Difficulty-05")]
     public class Problem027 : ProblemBase
     {
         protected override long ExpectedAnswer => -59231;

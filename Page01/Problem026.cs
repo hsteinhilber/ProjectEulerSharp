@@ -23,6 +23,7 @@ namespace ProjectEulerSharp.Page01
      * Find the value of d < 1000 for which 1/d contains the longest recurring cycle in its decimal fraction part.
      ******************************************************************************/
     [TestClass]
+    [TestCategory("Difficulty-05")]
     public class Problem026 : ProblemBase
     {
         protected override long ExpectedAnswer => 983;

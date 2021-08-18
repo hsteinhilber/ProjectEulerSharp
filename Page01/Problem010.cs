@@ -13,6 +13,7 @@ namespace ProjectEulerSharp.Page01
      * Find the sum of all the primes below two million.
      **************************************************************************/
     [TestClass]
+    [TestCategory("Difficulty-05")]
     public class Problem010 : ProblemBase
     {
         protected override long ExpectedAnswer => 142913828922;

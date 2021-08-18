@@ -14,6 +14,8 @@ namespace ProjectEulerSharp.Page01
      * What is the sum of the digits of the number 2^1000?
      ******************************************************************************/
     [TestClass]
+    [TestCategory("Fast")]
+    [TestCategory("Difficulty-05")]
     public class Problem016 : ProblemBase
     {
         protected override long ExpectedAnswer => 1366;

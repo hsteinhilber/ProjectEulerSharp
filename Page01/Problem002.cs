@@ -18,6 +18,8 @@ namespace ProjectEulerSharp.Page01
      * exceed four million, find the sum of the even-valued terms.
      **************************************************************************/
     [TestClass]
+    [TestCategory("Fast")]
+    [TestCategory("Difficulty-05")]
     public class Problem002 : ProblemBase 
     {
         protected override long ExpectedAnswer => 4613732;

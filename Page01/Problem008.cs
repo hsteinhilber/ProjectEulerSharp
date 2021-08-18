@@ -35,6 +35,8 @@ namespace ProjectEulerSharp.Page01
      * the greatest product. What is the value of this product?
      **************************************************************************/
     [TestClass]
+    [TestCategory("Fast")]
+    [TestCategory("Difficulty-05")]
     public class Problem008 : ProblemBase
     {
         static int[] BigNumber = new int[]

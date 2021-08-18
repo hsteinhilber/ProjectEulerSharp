@@ -29,6 +29,8 @@ namespace ProjectEulerSharp.Page01
      * What is the index of the first term in the Fibonacci sequence to contain 1000 digits?
      ******************************************************************************/
     [TestClass]
+    [TestCategory("Fast")]
+    [TestCategory("Difficulty-05")]
     public class Problem025 : ProblemBase
     {
         protected override long ExpectedAnswer => 4782;

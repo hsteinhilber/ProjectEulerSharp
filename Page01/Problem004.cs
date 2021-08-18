@@ -13,6 +13,8 @@ namespace ProjectEulerSharp.Page01
      * Find the largest palindrome made from the product of two 3-digit numbers.
      **************************************************************************/
     [TestClass]
+    [TestCategory("Fast")]
+    [TestCategory("Difficulty-05")]
     public class Problem004 : ProblemBase
     {
         protected override long ExpectedAnswer => 906609;

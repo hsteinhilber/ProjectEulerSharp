@@ -14,6 +14,8 @@ namespace ProjectEulerSharp.Page01
      * How many different ways can £2 be made using any number of coins?
      ******************************************************************************/
     [TestClass]
+    [TestCategory("Fast")]
+    [TestCategory("Difficulty-05")]
     public class Problem031 : ProblemBase
     {
         protected override long ExpectedAnswer => 73682;

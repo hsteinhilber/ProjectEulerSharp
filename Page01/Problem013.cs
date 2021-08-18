@@ -111,6 +111,8 @@ namespace ProjectEulerSharp.Page01
      * 53503534226472524250874054075591789781264330331690
      **************************************************************************/
     [TestClass]
+    [TestCategory("Fast")]
+    [TestCategory("Difficulty-05")]
     public class Problem013 : ProblemBase
     {
         protected override long ExpectedAnswer => 5537376230;

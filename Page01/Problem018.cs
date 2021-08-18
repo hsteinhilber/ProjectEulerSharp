@@ -42,6 +42,8 @@ namespace ProjectEulerSharp.Page01
      * rows; it cannot be solved by brute force, and requires a clever method! ;o)
      ******************************************************************************/
     [TestClass]
+    [TestCategory("Fast")]
+    [TestCategory("Difficulty-05")]
     public class Problem018 : ProblemBase
     {
         protected override long ExpectedAnswer => 1074;

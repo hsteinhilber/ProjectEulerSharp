@@ -28,6 +28,7 @@ namespace ProjectEulerSharp.Page01
      * abundant numbers.
      ******************************************************************************/
     [TestClass]
+    [TestCategory("Difficulty-05")]
     public class Problem023 : ProblemBase
     {
         protected override long ExpectedAnswer => 4179871;

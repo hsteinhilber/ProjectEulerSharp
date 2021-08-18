@@ -17,6 +17,8 @@ namespace ProjectEulerSharp.Page01
      * Evaluate the sum of all the amicable numbers under 10000.
      ******************************************************************************/
     [TestClass]
+    [TestCategory("Fast")]
+    [TestCategory("Difficulty-05")]
     public class Problem021 : ProblemBase
     {
         protected override long ExpectedAnswer => 31626;

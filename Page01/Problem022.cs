@@ -21,6 +21,8 @@ namespace ProjectEulerSharp.Page01
      * What is the total of all the name scores in the file?
      ******************************************************************************/
     [TestClass]
+    [TestCategory("Fast")]
+    [TestCategory("Difficulty-05")]
     public class Problem022 : ProblemBase
     {
         protected override long ExpectedAnswer => 871198282;

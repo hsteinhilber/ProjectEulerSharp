@@ -14,6 +14,8 @@ namespace ProjectEulerSharp.Page01
      * What is the largest prime factor of the number 600851475143?
      **************************************************************************/
     [TestClass]
+    [TestCategory("Fast")]
+    [TestCategory("Difficulty-05")]
     public class Problem003 : ProblemBase
     {
         protected override long ExpectedAnswer => 6857;

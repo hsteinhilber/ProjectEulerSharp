@@ -14,6 +14,8 @@ namespace ProjectEulerSharp.Page01
      * What is the 10,001st prime number?
      **************************************************************************/
     [TestClass]
+    [TestCategory("Fast")]
+    [TestCategory("Difficulty-05")]
     public class Problem007 : ProblemBase
     {
         protected override long ExpectedAnswer => 104743;

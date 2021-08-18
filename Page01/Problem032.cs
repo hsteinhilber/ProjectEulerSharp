@@ -20,6 +20,8 @@ namespace ProjectEulerSharp.Page01
      * once in your sum.
      ******************************************************************************/
     [TestClass]
+    [TestCategory("Fast")]
+    [TestCategory("Difficulty-05")]
     public class Problem032 : ProblemBase
     {
         protected override long ExpectedAnswer => 45228;
