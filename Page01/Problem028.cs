@@ -24,8 +24,30 @@ namespace ProjectEulerSharp.Page01
 
         protected override long SolutionImplementation()
         {
-            return 0;
+            int x = GRID_SIZE / 2, y = GRID_SIZE / 2;
+            int dx = 0, dy = -1;
+            long sum = 0;
+
+            for (int n = 1; n <= GRID_SIZE * GRID_SIZE; n++)
+            {
+                if (x == y || x + y == GRID_SIZE - 1)
+                    sum += n;
+
+                if (x == y || (x < GRID_SIZE / 2 && x + y == GRID_SIZE - 1) || (x > GRID_SIZE / 2 && x + y == GRID_SIZE))
+                {
+                    var tmp = dx;
+                    dx = -dy;
+                    dy = tmp;
+                }
+
+                x += dx;
+                y += dy;
+            }
+
+            return sum;
         }
+
+        private const int GRID_SIZE = 1001;
     }
 }
 
