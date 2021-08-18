@@ -33,7 +33,29 @@ namespace ProjectEulerSharp.Page01
 
         protected override long SolutionImplementation()
         {
-            return 0;
+            long maxPrimes = 0;
+            long product = 0;
+
+            for (long a = -999; a <= 999; a++)
+                for (long b = -1000; b <= 1000; b++)
+                {
+                    var primes = CountGeneratedPrimes(a, b);
+                    if (primes > maxPrimes)
+                    {
+                        maxPrimes = primes;
+                        product = a * b;
+                    }
+                }
+
+            return product;
+        }
+
+        public long CountGeneratedPrimes(long a, long b)
+        {
+            long n = 0;
+            while ((n * n + a * n + b).IsPrime())
+                n++;
+            return n;
         }
     }
 }
