@@ -1,4 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Text;
+using System.Text.RegularExpressions;
 
 namespace ProjectEulerSharp.Page01
 {
@@ -27,7 +29,33 @@ namespace ProjectEulerSharp.Page01
 
         protected override long SolutionImplementation()
         {
-            return 0;
+            long result = 0;
+            var recurring = "";
+            for (int d = 2; d < 1000; d++)
+            {
+                var value = UnitFractionToDecimalAsString(d);
+                var match = Regex.Match(value.ToString(), @"0\.\d*?(?<recurring>\d+?)\k<recurring>{2,}");
+                if (match.Groups["recurring"].Length > recurring.Length)
+                {
+                    recurring = match.Groups["recurring"].Value;
+                    result = d;
+                }
+            }
+            return result;
+        }
+
+        private string UnitFractionToDecimalAsString(int denominator)
+        {
+            var result = new StringBuilder("0.");
+
+            var numerator = 10;
+            do
+            {
+                result.Append(numerator / denominator);
+                numerator = (numerator % denominator) * 10;
+            } while (result.Length < 10000 && numerator > 0);
+
+            return result.ToString();
         }
     }
 }
