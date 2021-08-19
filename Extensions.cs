@@ -95,9 +95,51 @@ namespace ProjectEulerSharp
             return collection.Aggregate(1L, (p, v) => p * v);
         }
 
+        /// <summary>
+        /// Computes the sum of all <see cref="BigInteger"/> in a collection
+        /// </summary>
+        /// <param name="collection">The collection to aggregate</param>
+        /// <returns>The sum of all elements</returns>
         public static BigInteger Sum(this IEnumerable<BigInteger> collection)
         {
             return collection.Aggregate((p, v) => p + v);
+        }
+
+        /// <summary>
+        /// Computes the greatest common divisor (GCD) between two numbers
+        /// </summary>
+        /// <param name="left">The first number</param>
+        /// <param name="right">The second number</param>
+        /// <returns>The greatest common divisor that divides evenly into both numbers</returns>
+        public static long GetGreatestCommonDivisor(this long left, long right)
+        {
+            return (from lpf in left.GetPrimeFactors()
+                    join rpf in right.GetPrimeFactors() on lpf.Prime equals rpf.Prime
+                    select lpf.Prime.Pow(lpf.Count < rpf.Count ? lpf.Count : rpf.Count)).Product();
+        }
+
+        /// <summary>
+        /// Computes the smalles common multiple of two numbers
+        /// </summary>
+        /// <param name="left">The first number</param>
+        /// <param name="right">The second number</param>
+        /// <returns>The smallest number that both <paramref name="left"/> and <paramref name="right"/> divide into evenly</returns>
+        public static long GetLeastCommonMultiple(this long left, long right)
+        {
+            return (from pf in left.GetPrimeFactors().Union(right.GetPrimeFactors())
+                    group pf by pf.Prime into factor
+                    select factor.Key.Pow(factor.Max(pf => pf.Count))).Product();
+        }
+
+        /// <summary>
+        /// Computes an exponent as <see cref="Math.Pow(double, double)"/>, but using <see cref="long"/>
+        /// </summary>
+        /// <param name="number">The base number</param>
+        /// <param name="exponent">The exponent to raise number to</param>
+        /// <returns>The result of multiplying <paramref name="number"/> by itself <paramref name="exponent"/> times</returns>
+        public static long Pow(this long number, int exponent)
+        {
+            return Enumerable.Repeat(number, exponent).Product();
         }
 
         /// <summary>
