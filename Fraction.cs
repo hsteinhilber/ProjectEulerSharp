@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ProjectEulerSharp
 {
-    struct Fraction : IComparable<Fraction>, IComparable, IEquatable<Fraction>
+    public struct Fraction : IComparable<Fraction>, IComparable, IEquatable<Fraction>
     {
         public long Numerator { get; }
         public long Denominator { get; }

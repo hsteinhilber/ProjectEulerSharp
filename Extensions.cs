@@ -96,6 +96,16 @@ namespace ProjectEulerSharp
         }
 
         /// <summary>
+        /// Multiplies together all of the fractions in a collection.
+        /// </summary>
+        /// <param name="collection">A collection of <see cref="Fraction"/> values to multiply together</param>
+        /// <returns>The total product after multiplying all of the elements of the collection</returns>
+        public static Fraction Product(this IEnumerable<Fraction> collection)
+        {
+            return collection.Aggregate(new Fraction(1, 1), (p, v) => p * v);
+        }
+
+        /// <summary>
         /// Computes the sum of all <see cref="BigInteger"/> in a collection
         /// </summary>
         /// <param name="collection">The collection to aggregate</param>

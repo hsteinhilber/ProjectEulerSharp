@@ -27,49 +27,21 @@ namespace ProjectEulerSharp.Page01
 
         protected override long SolutionImplementation()
         {
-
-            Fraction product = new Fraction(1, 1);
-            foreach (var f in FindDigitCancellingFractions())
-            {
-                LogValue(f);
-                product *= f;
-                LogValue(product);
-            }
-
-            product = product.Simplify();
-            LogValue(product);
-
-            return product.Denominator;
+            return FindDigitCancellingFractions().Product().Simplify().Denominator;
         }
 
         private IEnumerable<Fraction> FindDigitCancellingFractions()
         {
             for (int n = 1; n <= 9; n++)
-            {
                 for (int d = 1; d <= 9; d++)
-                {
                     for (int c = 1; c <= 9; c++)
                     {
                         Fraction simplified = new Fraction(n, d);
+                        Fraction digitCancelling = new Fraction(10 * n + c, 10 * c + d);
 
-                        var tmp = new Fraction(10 * n + c, 10 * c + d);
-                        if ((tmp.Numerator < tmp.Denominator) && (tmp == simplified))
-                            yield return tmp;
-
-                        tmp = new Fraction(10 * n + c, 10 * d + c);
-                        if ((tmp.Numerator < tmp.Denominator) && (tmp == simplified))
-                            yield return tmp;
-
-                        tmp = new Fraction(10 * c + n, 10 * c + d);
-                        if ((tmp.Numerator < tmp.Denominator) && (tmp == simplified))
-                            yield return tmp;
-
-                        tmp = new Fraction(10 * c + n, 10 * d + c);
-                        if ((tmp.Numerator < tmp.Denominator) && (tmp == simplified))
-                            yield return tmp;
+                        if ((digitCancelling.Numerator < digitCancelling.Denominator) && (digitCancelling == simplified))
+                            yield return digitCancelling;
                     }
-                }
-            }
         }
     }
 }
