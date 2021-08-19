@@ -19,10 +19,11 @@ namespace ProjectEulerSharp.Page01
      * find the value of the denominator.
      ******************************************************************************/
     [TestClass]
+    [TestCategory("Fast")]
     [TestCategory("Difficulty-05")]
     public class Problem033 : ProblemBase
     {
-        // protected override long ExpectedAnswer => 0;
+        protected override long ExpectedAnswer => 100;
 
         protected override long SolutionImplementation()
         {
