@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Collections;
+using System.Text;
 
 namespace ProjectEulerSharp
 {
@@ -64,6 +65,19 @@ namespace ProjectEulerSharp
         IEnumerator IEnumerable.GetEnumerator()
         {
             return this.GetEnumerator();
+        }
+
+        public override string ToString()
+        {
+            var result = new StringBuilder();
+            result.AppendFormat("[{0}]", this.ComputeValue());
+            result.Append(" { ");
+            foreach (var pf in this)
+                result.AppendFormat("{0}^{1}, ", pf.Prime, pf.Count);
+            if (this.Count > 0)
+                result.Remove(result.Length - 2, 2);
+            result.Append(" }");
+            return result.ToString();
         }
     }
 }
