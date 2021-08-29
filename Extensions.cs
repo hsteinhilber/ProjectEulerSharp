@@ -184,7 +184,8 @@ namespace ProjectEulerSharp
         /// <returns>A <see cref="BigInteger"/> representing the factorial of the given number</returns>
         public static BigInteger Factorial(this long number)
         {
-            if (number <= 1) return number;
+            if (number == 0 || number == 1) return 1;
+            if (number < 0) return number;
 
             return number * Factorial(number - 1);
         }
