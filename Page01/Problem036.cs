@@ -1,4 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
+
 namespace ProjectEulerSharp.Page01
 {
     /******************************************************************************
@@ -17,7 +19,14 @@ namespace ProjectEulerSharp.Page01
 
         protected override long SolutionImplementation()
         {
-            return 0;
+            var sum = 0;
+            for (int number = 1; number < 1000000; number++)
+            {
+                var binary = Convert.ToString(number, 2);
+                if (number.IsPalindrome() && binary.IsPalindrome())
+                    sum += number;
+            }
+            return sum;
         }
     }
 }
