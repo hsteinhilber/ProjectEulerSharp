@@ -1,4 +1,8 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using ProjectEulerSharp.Sequences;
+using System;
+using System.Linq;
+
 namespace ProjectEulerSharp.Page01
 {
     /******************************************************************************
@@ -17,7 +21,7 @@ namespace ProjectEulerSharp.Page01
 
         protected override long SolutionImplementation()
         {
-            return 0;
+            return PrimeNumberSequence.All.TakeWhile(n => n < 1000000).Where(n => n.IsCircularPrime()).Count();
         }
     }
 }
