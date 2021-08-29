@@ -20,7 +20,7 @@ namespace ProjectEulerSharp.Page01
         protected override long SolutionImplementation()
         {
             var sum = 0;
-            for (int number = 1; number < 1000000; number++)
+            for (int number = 1; number < 1000000; number += 2)
             {
                 var binary = Convert.ToString(number, 2);
                 if (number.IsPalindrome() && binary.IsPalindrome())
