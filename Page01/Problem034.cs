@@ -20,7 +20,7 @@ namespace ProjectEulerSharp.Page01
         protected override long SolutionImplementation()
         {
             long sum = 0;
-            for (int number = 10; number < 10000000; number++)
+            for (int number = 10; number < 50000; number++)
             {
                 var factorials = number.ToString().ToCharArray().Select(n => ((long)(n - '0')).Factorial()).Sum();
                 if (number == factorials)
