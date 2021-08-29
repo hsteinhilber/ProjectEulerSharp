@@ -233,11 +233,35 @@ namespace ProjectEulerSharp
         /// <returns><code>true</code> if the number is prime, otherwise <code>false</code></returns>
         public static bool IsPrime(this long num)
         {
+            if (num == 2) return true;
             if (num < 2 || num % 2 == 0)
                 return false;
 
             for (long i = 3; i * i <= num; i += 2)
                 if (num % i == 0) return false;
+
+            return true;
+        }
+
+        /// <summary>
+        /// Verifies if a number is a circular prime (a prime that all rotations of its digits are also prime).
+        /// </summary>
+        /// <param name="num">The number to test</param>
+        /// <returns><code>true</code> if the number is a circular prime, otherwise <code>false</code></returns>
+        public static bool IsCircularPrime(this long num)
+        {
+            if (!num.IsPrime()) return false;
+
+            int digits = num.ToString().Length;
+            if (digits == 1) return true;
+
+            long nextDigit = (long)Math.Pow(10, digits);
+            for (int rotations = 1; rotations < digits; rotations++)
+            {
+                var tmp = num * 10;
+                num = (tmp % nextDigit) + (tmp / nextDigit);
+                if (!num.IsPrime()) return false;
+            }
 
             return true;
         }
@@ -256,7 +280,7 @@ namespace ProjectEulerSharp
                 if (number % divisor == 0)
                 {
                     result += divisor;
-                    if (divisor * divisor != number) 
+                    if (divisor * divisor != number)
                         result += number / divisor;
                 }
             }
