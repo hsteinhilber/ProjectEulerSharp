@@ -15,7 +15,7 @@ namespace ProjectEulerSharp.Page01
     [TestClass]
     public class Problem034 : ProblemBase
     {
-        // protected override long ExpectedAnswer => 0;
+        protected override long ExpectedAnswer => 40730;
 
         protected override long SolutionImplementation()
         {
