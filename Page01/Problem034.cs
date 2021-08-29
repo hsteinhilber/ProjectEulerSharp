@@ -13,6 +13,8 @@ namespace ProjectEulerSharp.Page01
      * Note: As 1! = 1 and 2! = 2 are not sums they are not included.
      ******************************************************************************/
     [TestClass]
+    [TestCategory("Fast")]
+    [TestCategory("Difficulty-05")]
     public class Problem034 : ProblemBase
     {
         protected override long ExpectedAnswer => 40730;

@@ -15,6 +15,8 @@ namespace ProjectEulerSharp.Page01
      * How many circular primes are there below one million?
      ******************************************************************************/
     [TestClass]
+    [TestCategory("Fast")]
+    [TestCategory("Difficulty-05")]
     public class Problem035 : ProblemBase
     {
         protected override long ExpectedAnswer => 55;
