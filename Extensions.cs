@@ -253,8 +253,6 @@ namespace ProjectEulerSharp
             if (!num.IsPrime()) return false;
 
             int digits = num.ToString().Length;
-            if (digits == 1) return true;
-
             long nextDigit = (long)Math.Pow(10, digits);
             for (int rotations = 1; rotations < digits; rotations++)
             {
