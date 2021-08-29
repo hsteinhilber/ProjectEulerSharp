@@ -56,7 +56,7 @@ namespace ProjectEulerSharp
         /// <returns><code>true</code> if the number is a palindrome, otherwise <code>false</code></returns>
         public static bool IsPalindrome(this int value)
         {
-            return IsPalindrome((long)value);
+            return IsPalindrome(value.ToString());
         }
 
         /// <summary>
@@ -66,11 +66,31 @@ namespace ProjectEulerSharp
         /// <returns><code>true</code> if the number is a palindrome, otherwise <code>false</code></returns>
         public static bool IsPalindrome(this long value)
         {
-            var digits = value.ToString().ToCharArray();
-            var length = digits.Length;
+            return IsPalindrome(value.ToString());
+        }
+
+        /// <summary>
+        /// Verifies if a number is a palindrome number (the same backwards and forwards)
+        /// </summary>
+        /// <param name="value">A <see cref="BigInteger"/> value to verify</param>
+        /// <returns><code>true</code> if the number is a palindrome, otherwise <code>false</code></returns>
+        public static bool IsPalindrome(this BigInteger value)
+        {
+            return IsPalindrome(value.ToString());
+        }
+
+        /// <summary>
+        /// Verifies if a number is a palindrome number (the same backwards and forwards)
+        /// </summary>
+        /// <param name="value">A <see cref="string"/> value to verify</param>
+        /// <returns><code>true</code> if the string is a palindrome, otherwise <code>false</code></returns>
+        public static bool IsPalindrome(this string value)
+        {
+            var characters = value.ToCharArray();
+            var length = characters.Length;
             var midpoint = length / 2;
             for (int i = 0; i <= midpoint; ++i)
-                if (digits[i] != digits[length - i - 1])
+                if (characters[i] != characters[length - i - 1])
                     return false;
             return true;
         }
