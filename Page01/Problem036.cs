@@ -1,5 +1,8 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
+using System.Linq;
+using System.ComponentModel.Design;
+using System.Security.Cryptography;
 
 namespace ProjectEulerSharp.Page01
 {
@@ -19,14 +22,10 @@ namespace ProjectEulerSharp.Page01
 
         protected override long SolutionImplementation()
         {
-            var sum = 0;
-            for (int number = 1; number < 1000000; number += 2)
-            {
-                var binary = Convert.ToString(number, 2);
-                if (number.IsPalindrome() && binary.IsPalindrome())
-                    sum += number;
-            }
-            return sum;
+            return (from number in Enumerable.Range(1, 1000000).Where(i => i % 2 != 0)
+                    where number.IsPalindrome() && Convert.ToString(number, 2).IsPalindrome()
+                    select number).Sum();
+
         }
     }
 }
