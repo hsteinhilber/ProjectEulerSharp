@@ -22,6 +22,8 @@ namespace ProjectEulerSharp.Page01
     [TestClass]
     public class Problem037 : ProblemBase
     {
+        protected override long ExpectedAnswer => 748317;
+
         protected override long SolutionImplementation()
         {
             return (from prime in PrimeNumberSequence.All
