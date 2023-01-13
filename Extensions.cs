@@ -334,5 +334,39 @@ namespace ProjectEulerSharp
         {
             return number > number.GetSumOfDivisors();
         }
+
+        /// <summary>
+        /// Verifies if a prime number is left truncatable (stays prime as the left-hand digits are removed). (2,3,5 & 7 are not truncatable)
+        /// </summary>
+        /// <param name="number">The number to verify (must be prime)</param>
+        /// <returns><code>true</code> if the number is left truncatable</returns>
+        public static bool IsLeftTruncatable(this long number)
+        {
+            if (number < 10) return false;
+            var modulus = (long)Math.Pow(10, Math.Floor(Math.Log10(number)));
+            while (modulus > 1)
+            {
+                if (!number.IsPrime()) return false;
+                number %= modulus;
+                modulus /= 10;
+            }
+            return number.IsPrime();
+        }
+
+        /// <summary>
+        /// Verifies if a prime number is right truncatable (stays prime as the right-hand digits are removed).  (2,3,5 & 7 are not truncatable)
+        /// </summary>
+        /// <param name="number">The number to verify (must be prime)</param>
+        /// <returns><code>true</code> if the number is right truncatable</returns>
+        public static bool IsRightTruncatable(this long number)
+        {
+            if (number < 10) return false;
+            while (number > 0)
+            {
+                if (!number.IsPrime()) return false;
+                number /= 10;
+            }
+            return true;
+        }
     }
 }

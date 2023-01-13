@@ -3,6 +3,7 @@ using System;
 using System.Linq;
 using System.ComponentModel.Design;
 using System.Security.Cryptography;
+using ProjectEulerSharp.Sequences;
 
 namespace ProjectEulerSharp.Page01
 {
@@ -23,7 +24,9 @@ namespace ProjectEulerSharp.Page01
     {
         protected override long SolutionImplementation()
         {
-            throw new NotImplementedException();
+            return (from prime in PrimeNumberSequence.All
+                    where prime.IsRightTruncatable() && prime.IsLeftTruncatable()
+                    select prime).Take(11).Sum();
         }
     }
 }
