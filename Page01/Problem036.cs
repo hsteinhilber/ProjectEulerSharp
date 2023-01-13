@@ -16,6 +16,8 @@ namespace ProjectEulerSharp.Page01
      * (Please note that the palindromic number, in either base, may not include leading zeros.)
      ******************************************************************************/
     [TestClass]
+    [TestCategory("Fast")]
+    [TestCategory("Difficulty-05")]
     public class Problem036 : ProblemBase
     {
         protected override long ExpectedAnswer => 872187;

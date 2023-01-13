@@ -20,6 +20,8 @@ namespace ProjectEulerSharp.Page01
      * NOTE: 2, 3, 5, and 7 are not considered to be truncatable primes.
      ******************************************************************************/
     [TestClass]
+    [TestCategory("Fast")]
+    [TestCategory("Difficulty-05")]
     public class Problem037 : ProblemBase
     {
         protected override long ExpectedAnswer => 748317;
