@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Numerics;
+using System.Runtime.CompilerServices;
+using System.Text;
 
 namespace ProjectEulerSharp
 {
@@ -81,6 +83,45 @@ namespace ProjectEulerSharp
                 if (characters[i] != characters[length - i - 1])
                     return false;
             return true;
+        }
+
+        /// <summary>
+        /// Determines if a number contains all digits within a specified range of digits. So a pandigital(2, 5)
+        /// number would contain all digits 2, 3, 4, and 5 and no others. 
+        /// </summary>
+        /// <param name="value">The number to test</param>
+        /// <param name="min">The smallest digit that can be present in the number, must be 0 to 9 and smaller than <paramref name="max"/></param>
+        /// <param name="max">The largest digit that can be present in the number, must be 0 to 9 and larger than <paramref name="min"/></param>
+        /// <returns><code>true</code> if the number contains all the digits in the specified range and only those digits.</returns>
+        public static bool IsPandigital(this long value, int min = 1, int max = 9)
+        {
+            var digits = value.ToString();
+            if (digits.Length != (max - min + 1)) return false;
+            
+            for (int i = min; i <= max; i++)
+                if (!digits.Contains(i.ToString())) return false;
+
+            return true;
+        }
+
+        /// <summary>
+        /// Computes the concatenated product of a number with the numbers 1..n. 
+        /// </summary>
+        /// <param name="value">A non-negative integer to compute the products with</param>
+        /// <param name="n">A positive number of integers to multiply by <paramref name="value"/> and concatenate</param>
+        /// <returns>The concatenated result of multiplying <paramref name="value"/> by successive integers 1 to <paramref name="n"/></returns>
+        public static long ConcatenatedProduct(this long value, int n)
+        {
+            if (n < 1 || value < 0) return 0;
+
+            StringBuilder b = new StringBuilder(9);
+            for (int i = 1; i <= n; i++)
+            {
+                b.Append(value * i);
+            }
+
+            long.TryParse(b.ToString(), out long result);
+            return result;
         }
 
         /// <summary>

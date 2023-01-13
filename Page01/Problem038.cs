@@ -29,7 +29,15 @@ namespace ProjectEulerSharp.Page01
     {
         protected override long SolutionImplementation()
         {
-            throw new NotImplementedException();
+            long result = 0;
+            for (long i = 1; i <= 9999; i++)
+                for (int n = 2; n <= 9; n++)
+                {
+                    var product = i.ConcatenatedProduct(n);
+                    if (product > result && product.IsPandigital())
+                        result = product;
+                }
+            return result;
         }
     }
 }
