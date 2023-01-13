@@ -25,6 +25,8 @@ namespace ProjectEulerSharp.Page01
      * concatenated product of an integer with (1,2, ... , n) where n > 1?
      ******************************************************************************/
     [TestClass]
+    [TestCategory("Fast")]
+    [TestCategory("Difficulty-05")]
     public class Problem038 : ProblemBase
     {
         protected override long ExpectedAnswer => 932718654;
