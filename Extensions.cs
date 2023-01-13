@@ -10,6 +10,11 @@ namespace ProjectEulerSharp
     public static class Extensions
     {
         /// <summary>
+        /// Memoized results for <see cref="IsAbundant(long)"/> function.
+        /// </summary>
+        private static readonly Dictionary<long, bool> _verifiedAbundance = new Dictionary<long, bool>();
+
+        /// <summary>
         /// Numbers verified as prime by the <see cref="IsPrime"/> function, seeded with the first 10 primes.
         /// </summary>
         private static readonly HashSet<long> _verifiedPrimes = new HashSet<long>() { 2, 3, 5, 7, 11, 13, 17, 19, 23, 29 };
@@ -318,7 +323,8 @@ namespace ProjectEulerSharp
         /// <returns><code>true</code> if the number is abundant, otherwise <code>false</code></returns>
         public static bool IsAbundant(this long number)
         {
-            return number < number.GetSumOfDivisors();
+            if (_verifiedAbundance.ContainsKey(number)) return _verifiedAbundance[number];
+            return _verifiedAbundance[number] = (number < number.GetSumOfDivisors());
         }
 
         /// <summary>
