@@ -62,32 +62,9 @@ namespace ProjectEulerSharp
         /// <summary>
         /// Verifies if a number is a palindrome number (the same backwards and forwards)
         /// </summary>
-        /// <param name="value">An <see cref="int"/> value to verify</param>
-        /// <returns><code>true</code> if the number is a palindrome, otherwise <code>false</code></returns>
-        public static bool IsPalindrome(this int value)
-        {
-            return IsPalindrome(value.ToString());
-        }
-
-        /// <summary>
-        /// Verifies if a number is a palindrome number (the same backwards and forwards)
-        /// </summary>
-        /// <param name="value">A <see cref="long"/> value to verify</param>
-        /// <returns><code>true</code> if the number is a palindrome, otherwise <code>false</code></returns>
-        public static bool IsPalindrome(this long value)
-        {
-            return IsPalindrome(value.ToString());
-        }
-
-        /// <summary>
-        /// Verifies if a number is a palindrome number (the same backwards and forwards)
-        /// </summary>
-        /// <param name="value">A <see cref="BigInteger"/> value to verify</param>
-        /// <returns><code>true</code> if the number is a palindrome, otherwise <code>false</code></returns>
-        public static bool IsPalindrome(this BigInteger value)
-        {
-            return IsPalindrome(value.ToString());
-        }
+        /// <param name="value">A value to verify</param>
+        /// <returns><code>true</code> if the value is a palindrome, otherwise <code>false</code></returns>
+        public static bool IsPalindrome<T>(this T value) where T : struct => IsPalindrome(value.ToString());
 
         /// <summary>
         /// Verifies if a number is a palindrome number (the same backwards and forwards)
