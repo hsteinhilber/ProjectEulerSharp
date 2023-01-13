@@ -24,10 +24,7 @@ namespace ProjectEulerSharp
         /// </summary>
         /// <param name="value">An <see cref="int"/> value to compute the prime factors of</param>
         /// <returns>A collection of <see cref="PrimeFactor"/></returns>
-        public static IEnumerable<PrimeFactor> GetPrimeFactors(this int value)
-        {
-            return GetPrimeFactors((long)value);
-        }
+        public static IEnumerable<PrimeFactor> GetPrimeFactors(this int value) => GetPrimeFactors((long)value);
 
         /// <summary>
         /// Computes all of the prime factors of a given number and returns them as a collection.
@@ -54,6 +51,13 @@ namespace ProjectEulerSharp
             return factors;
         }
 
+        /// <summary>
+        /// Verifies if a number is within a specified range.
+        /// </summary>
+        /// <param name="number">The number to test</param>
+        /// <param name="min">The lower bound of the range, inclusive</param>
+        /// <param name="max">The upper bound of the range, inclusive</param>
+        /// <returns></returns>
         public static bool InRange(this long number, long min, long max)
         {
             return (min <= number) && (number <= max);
