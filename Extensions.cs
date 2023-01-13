@@ -58,10 +58,7 @@ namespace ProjectEulerSharp
         /// <param name="min">The lower bound of the range, inclusive</param>
         /// <param name="max">The upper bound of the range, inclusive</param>
         /// <returns></returns>
-        public static bool InRange(this long number, long min, long max)
-        {
-            return (min <= number) && (number <= max);
-        }
+        public static bool InRange(this long number, long min, long max) => (min <= number) && (number <= max);
 
         /// <summary>
         /// Verifies if a number is a palindrome number (the same backwards and forwards)
@@ -91,40 +88,29 @@ namespace ProjectEulerSharp
         /// </summary>
         /// <param name="collection">A collection of <see cref="int"/> values to multiply together</param>
         /// <returns>The total product after multiplying all of the elements of the collection</returns>
-        public static long Product(this IEnumerable<int> collection)
-        {
-            return collection.Aggregate(1L, (p, v) => p * v);
-        }
+        public static long Product(this IEnumerable<int> collection) => collection.Aggregate(1L, (p, v) => p * v);
 
         /// <summary>
         /// Multiplies together all of the elements of a collection.
         /// </summary>
         /// <param name="collection">A collection of <see cref="long"/> values to multiply together</param>
         /// <returns>The total product after multiplying all of the elements of the collection</returns>
-        public static long Product(this IEnumerable<long> collection)
-        {
-            return collection.Aggregate(1L, (p, v) => p * v);
-        }
+        public static long Product(this IEnumerable<long> collection) => collection.Aggregate(1L, (p, v) => p * v);
 
         /// <summary>
         /// Multiplies together all of the fractions in a collection.
         /// </summary>
         /// <param name="collection">A collection of <see cref="Fraction"/> values to multiply together</param>
         /// <returns>The total product after multiplying all of the elements of the collection</returns>
-        public static Fraction Product(this IEnumerable<Fraction> collection)
-        {
-            return collection.Aggregate(new Fraction(1, 1), (p, v) => p * v);
-        }
+        public static Fraction Product(this IEnumerable<Fraction> collection) 
+            => collection.Aggregate(new Fraction(1, 1), (p, v) => p * v);
 
         /// <summary>
         /// Computes the sum of all <see cref="BigInteger"/> in a collection
         /// </summary>
         /// <param name="collection">The collection to aggregate</param>
         /// <returns>The sum of all elements</returns>
-        public static BigInteger Sum(this IEnumerable<BigInteger> collection)
-        {
-            return collection.Aggregate((p, v) => p + v);
-        }
+        public static BigInteger Sum(this IEnumerable<BigInteger> collection) => collection.Aggregate((p, v) => p + v);
 
         /// <summary>
         /// Computes the greatest common divisor (GCD) between two numbers
@@ -158,10 +144,7 @@ namespace ProjectEulerSharp
         /// <param name="number">The base number</param>
         /// <param name="exponent">The exponent to raise number to</param>
         /// <returns>The result of multiplying <paramref name="number"/> by itself <paramref name="exponent"/> times</returns>
-        public static long Pow(this long number, int exponent)
-        {
-            return Enumerable.Repeat(number, exponent).Product();
-        }
+        public static long Pow(this long number, int exponent) => Enumerable.Repeat(number, exponent).Product();
 
         /// <summary>
         /// Computes all of the divisors (numbers that will evenly divide into) a given value.
@@ -313,20 +296,14 @@ namespace ProjectEulerSharp
         /// </summary>
         /// <param name="number">The number to verify</param>
         /// <returns><code>true</code> if the number is perfect, otherwise <code>false</code></returns>
-        public static bool IsPerfect(this long number)
-        {
-            return number == number.GetSumOfDivisors();
-        }
+        public static bool IsPerfect(this long number) => number == number.GetSumOfDivisors();
 
         /// <summary>
         /// Verifies if a number is considered a deficient number. A deficient number is one that is greater than the sum of its proper divisors.
         /// </summary>
         /// <param name="number">The number to verify</param>
         /// <returns><code>true</code> if the number is deficient, otherwise <code>false</code></returns>
-        public static bool IsDeficient(this long number)
-        {
-            return number > number.GetSumOfDivisors();
-        }
+        public static bool IsDeficient(this long number) => number > number.GetSumOfDivisors();
 
         /// <summary>
         /// Verifies if a prime number is left truncatable (stays prime as the left-hand digits are removed). (2,3,5 & 7 are not truncatable)
