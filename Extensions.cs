@@ -10,6 +10,11 @@ namespace ProjectEulerSharp
     public static class Extensions
     {
         /// <summary>
+        /// Numbers verified as prime by the <see cref="IsPrime"/> function, seeded with the first 10 primes.
+        /// </summary>
+        private static readonly HashSet<long> _verifiedPrimes = new HashSet<long>() { 2, 3, 5, 7, 11, 13, 17, 19, 23, 29 };
+
+        /// <summary>
         /// Computes all of the prime factors of a given number and returns them as a collection.
         /// </summary>
         /// <param name="value">An <see cref="int"/> value to compute the prime factors of</param>
@@ -253,13 +258,14 @@ namespace ProjectEulerSharp
         /// <returns><code>true</code> if the number is prime, otherwise <code>false</code></returns>
         public static bool IsPrime(this long num)
         {
-            if (num == 2) return true;
+            if (_verifiedPrimes.Contains(num)) return true;
             if (num < 2 || num % 2 == 0)
                 return false;
 
             for (long i = 3; i * i <= num; i += 2)
                 if (num % i == 0) return false;
 
+            _verifiedPrimes.Add(num);
             return true;
         }
 
