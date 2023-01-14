@@ -19,8 +19,12 @@ namespace ProjectEulerSharp.Page01
      * For which value of p ≤ 1000, is the number of solutions maximised?
      ******************************************************************************/
     [TestClass]
+    [TestCategory("Fast")]
+    [TestCategory("Difficulty-05")]
     public class Problem039 : ProblemBase
     {
+        protected override long ExpectedAnswer => 840;
+
         protected override long SolutionImplementation()
         {
             var counters = new Dictionary<int, int>();
