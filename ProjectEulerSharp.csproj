@@ -83,6 +83,7 @@
     <Compile Include="Page01\Problem035.cs" />
     <Compile Include="Page01\Problem036.cs" />
     <Compile Include="Page01\Problem037.cs" />
+    <Compile Include="Page01\Problem039.cs" />
     <Compile Include="Page01\Problem038.cs" />
     <Compile Include="Page02\Problem067.cs" />
     <Compile Include="PrimeFactor.cs" />
