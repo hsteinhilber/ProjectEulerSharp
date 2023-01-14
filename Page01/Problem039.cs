@@ -23,7 +23,23 @@ namespace ProjectEulerSharp.Page01
     {
         protected override long SolutionImplementation()
         {
-            throw new NotImplementedException();
+            var counters = new Dictionary<int, int>();
+            for (int p = 12; p <= 1000; p++)
+            {
+                counters[p] = 0;
+                for (int a = 3; a <= (p / 3) - 1; a++)
+                {
+                    for (int b = (p / 2) - a; b <= (p - a) / 2; b++)
+                    {
+                        var c = p - a - b;
+                        if (a * a + b * b == c * c)
+                        { counters[p]++; }
+                    }
+                }
+            }
+
+            var maxSolutions = counters.Max(c => c.Value);
+            return (from c in counters where c.Value == maxSolutions select c.Key).First();
         }
     }
 }
