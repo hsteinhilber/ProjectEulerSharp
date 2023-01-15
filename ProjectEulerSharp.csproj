@@ -100,6 +100,7 @@
     <Compile Include="Page01\Problem002.cs" />
     <Compile Include="Page01\Problem003.cs" />
     <Compile Include="Sequences\LexicographicSequence.cs" />
+    <Compile Include="Sequences\PandigitalSequence.cs" />
     <Compile Include="Sequences\PrimeNumberSequence.cs" />
     <Compile Include="ProblemBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

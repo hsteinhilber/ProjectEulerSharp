@@ -22,7 +22,9 @@ namespace ProjectEulerSharp.Page01
     {
         protected override long SolutionImplementation()
         {
-            throw new NotImplementedException();   
+            return (from p in new PandigitalSequence()
+                    where p.IsPrime()
+                    select p).Max();   
         }
     }
 }
