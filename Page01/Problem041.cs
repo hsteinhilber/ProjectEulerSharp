@@ -20,6 +20,7 @@ namespace ProjectEulerSharp.Page01
     [TestClass]
     public class Problem041 : ProblemBase
     {
+        protected override long ExpectedAnswer => 7652413;
         protected override long SolutionImplementation()
         {
             return (from p in new PandigitalSequence()
